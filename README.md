@@ -1,10 +1,4 @@
-<!--
-  Title: use-rematch-reducer
-  Description: use rematch like model in useReducer
-  Author: JiangWeixian
-  -->
-
-# use-rematch-reducer
+# @use-rematch/core
 
 <p>
   <img alt="Version" src="https://img.shields.io/github/package-json/v/jiangweixian/use-rematch-reducer/v2?label=use-rematch-reducer&logo=npm&style=for-the-badge" />
@@ -16,11 +10,7 @@
   </a>
 </p>
 
-> use [rematch2](https://github.com/JiangWeixian/rematch-v2) like reducer: [examples](https://github.com/JiangWeixian/use-rematch-reducer/tree/master/examples)
-
-> if you ara [rematch](https://github.com/rematch/rematch) user, use `use-rematch-reducer@<1.0.0`; if you are [rematch2](https://github.com/JiangWeixian/rematch-v2) user, use `use-rematch-reducer@>=1.0.0`
-
-- [use-rematch-reducer](#use-rematch-reducer)
+- [@use-rematch/core](#use-rematchcore)
   - [Features](#features)
   - [Install](#install)
   - [Usage](#usage)
@@ -30,26 +20,19 @@
 
 ## Features
 
-- typescript typo supported by [rematch2](https://github.com/JiangWeixian/rematch-v2). rematch2 has better typo like this.
-  
-  ![better-typo-in-rematch2](/docs/screenshots/rematch2.jpg)
-
-- async dispatch
+- [@use-rematch/core]
 
 ## Install
 
 ```sh
-npm install use-rematch-reducer --save
+npm install @use-rematch/core
 ```
 
 ## Usage
-> only support [rematch2's createModel](https://github.com/JiangWeixian/rematch-v2), [rematch2's combineModels](https://github.com/JiangWeixian/rematch-v2) is not supported
-
-![screenshots](/docs/screenshots/use-rematch-reducer.gif)
 
 ```tsx
 // import
-import { useRematchReducer } from 'use-rematch-reducer';
+import { useRematchReducer } from '@use-rematch/core';
 
 // create hook in compnent
 const [state, dispatch] = useRematchReducer({
@@ -101,7 +84,7 @@ see **full code** in [examples](/examples/src/pages/index.tsx)
 
 ## TODO
 
-- [ ] - add test part
+- [ ] - add test
 
 ## Author
 
