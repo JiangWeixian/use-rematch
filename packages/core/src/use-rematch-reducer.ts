@@ -2,6 +2,7 @@ import { useReducer, Reducer, useRef, useMemo } from 'react'
 import { ModelConfig } from '@rematch2/core'
 import { RematchReducerPlugin } from './types'
 import { PluginFactory } from './plugins'
+import compose from 'lodash.flowright'
 
 type Action = { type: string; payload: any; meta: any }
 const EMPTY_GETTERS = {}
@@ -35,8 +36,9 @@ type UseRematchReducerProps = {
 
 export const useRematchReducer = (model: ModelConfig<any>, { plugins = [] }: UseRematchReducerProps) => {
   const normalizedPlugins = plugins.map(plugin => PluginFactory.create(plugin))
+  const onInit = compose(normalizedPlugins.map(plugin => plugin.onInit))
   const stateRef = useRef(model.state)
-  const initialState = model.state
+  const initialState = onInit(model.state)
   const reducers = model.reducers
   const reactReducers = (state = initialState, action: Action) => {
     if (!reducers) {
@@ -50,6 +52,7 @@ export const useRematchReducer = (model: ModelConfig<any>, { plugins = [] }: Use
   const [state, dispatch] = useReducer(
     applyMiddware(reactReducers, (v: any) => {
       stateRef.current = v
+      return v
     }),
     initialState,
   )

@@ -6,8 +6,8 @@ export const PluginFactory = {
       onInit: (initialState: any) => {
         return plugin.onInit(initialState) ?? initialState
       },
-      onMiddlewarses: (state: any) => {
-        return plugin.onMiddlewarses(state) ?? state
+      onMiddlewarse: (state: any) => {
+        return plugin.onMiddlewarse(state) ?? state
       }
     }
   },

@@ -23,6 +23,6 @@ export function useRematchReducer<
 
 type RematchReducerPlugin = {
   onInit: (initalState: any) => any
-  onMiddlewarses: (state: any) => any
+  onMiddlewarse: (state: any) => any
 }
 
