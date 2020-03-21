@@ -20,3 +20,9 @@ export function useRematchReducer<
   ExtractRematchDispatchersFromReducers<R> & ExtractRematchDispatchersFromEffects<E>,
   ExtractRematchGettersObject<G>,
 ]
+
+type RematchReducerPlugin = {
+  onInit: (initalState: any) => any
+  onMiddlewarses: (state: any) => any
+}
+

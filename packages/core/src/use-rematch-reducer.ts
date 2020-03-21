@@ -1,5 +1,6 @@
 import { useReducer, Reducer, useRef, useMemo } from 'react'
 import { ModelConfig } from '@rematch2/core'
+import { RematchReducerPlugin } from './types'
 
 type Action = { type: string; payload: any; meta: any }
 const EMPTY_GETTERS = {}
@@ -26,7 +27,12 @@ const applyMiddware = (rootReducer: Reducer<any, any>, callback: Function) => {
  * use rematch-model-like-reducer
  * @param model ModelConfig<S>
  */
-export const useRematchReducer = (model: ModelConfig<any>) => {
+
+type UseRematchReducerProps = {
+  plugins?: RematchReducerPlugin[]
+}
+
+export const useRematchReducer = (model: ModelConfig<any>, { plugins = [] }: UseRematchReducerProps) => {
   const stateRef = useRef(model.state)
   const initialState = model.state
   const reducers = model.reducers
