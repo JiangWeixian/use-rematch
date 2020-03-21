@@ -1,3 +1,4 @@
+import react from 'react'
 import resolve from 'rollup-plugin-node-resolve'
 import commonjs from 'rollup-plugin-commonjs'
 import typescript from 'rollup-plugin-typescript2'
@@ -15,7 +16,11 @@ export default [
     },
     plugins: [
       resolve(), // so Rollup can find `ms`
-      commonjs(), // so Rollup can convert `ms` to an ES module
+      commonjs({
+        namedExports: {
+          'react': Object.keys(react)
+        }
+      }), // so Rollup can convert `ms` to an ES module
       typescript({
         typescript: require('typescript'),
       }), // so Rollup can convert TypeScript to JavaScript

@@ -41,7 +41,12 @@ describe('basic usage of use-rematch-reducer', () => {
         text: 1,
       } as { text: number },
       reducers: {
-        set: (v) => v
+        set(v, payload) {
+          return {
+            ...v,
+            ...payload
+          }
+        }
       },
       effects: {
         async asyncSet(this: any, payload) {
@@ -51,19 +56,23 @@ describe('basic usage of use-rematch-reducer', () => {
     }))
     hook.result.current[1].set({ text: 2 })
     expect(hook.result.current[0].text).toBe(2)
-    await hook.result.current[1].asyncSet({ text: 3 })
-    await hook.waitForNextUpdate()
+    hook.result.current[1].asyncSet({ text: 3 })
     expect(hook.result.current[0].text).toBe(3)
   })
 
-  test('getters should work fine', () => {
+  test('getters should work fine', async () => {
     const hook = renderHook(() => useRematchReducer({
       name: 'hook',
       state: {
         text: 1,
       } as { text: number },
       reducers: {
-        set: (v) => v
+        set(v, payload) {
+          return {
+            ...v,
+            ...payload
+          }
+        }
       },
       getters: {
         bigthanzero(state) {
