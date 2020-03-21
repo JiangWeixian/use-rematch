@@ -1,6 +1,7 @@
 import { useReducer, Reducer, useRef, useMemo } from 'react'
 import { ModelConfig } from '@rematch2/core'
 import { RematchReducerPlugin } from './types'
+import { PluginFactory } from './plugins'
 
 type Action = { type: string; payload: any; meta: any }
 const EMPTY_GETTERS = {}
@@ -33,6 +34,7 @@ type UseRematchReducerProps = {
 }
 
 export const useRematchReducer = (model: ModelConfig<any>, { plugins = [] }: UseRematchReducerProps) => {
+  const normalizedPlugins = plugins.map(plugin => PluginFactory.create(plugin))
   const stateRef = useRef(model.state)
   const initialState = model.state
   const reducers = model.reducers
