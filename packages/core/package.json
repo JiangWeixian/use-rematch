@@ -58,5 +58,9 @@
     "pretest": "npm run build",
     "update": "npm update && npm update --save-dev",
     "check": "npm outdated && npm outdated --save-dev"
-  }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "gitHead": "9505c1c5f16d04b15ab3df2fbac4726222590fbd"
 }
