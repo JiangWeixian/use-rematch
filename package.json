@@ -1,0 +1,36 @@
+{
+  "name": "use-rematch",
+  "version": "1.1.0",
+  "author": {
+    "name": "jiangweixian"
+  },
+  "repository": {
+    "url": "https://github.com/JiangWeixian/use-rematch"
+  },
+  "license": "MIT",
+  "keywords": [
+    "rematch",
+    "rematch2",
+    "redux",
+    "hooks",
+    "useReducer",
+    "useRematchReducer"
+  ],
+  "peerDependencies": {
+    "react": ">=16.9.0"
+  },
+  "devDependencies": {
+    "lerna": "^3.20.2",
+    "prettier": "1.18.2",
+    "pretty-quick": "1.11.1"
+  },
+  "scripts": {
+    "bootstrap": "lerna bootstrap",
+    "build": "lerna run build"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
+  }
+}
