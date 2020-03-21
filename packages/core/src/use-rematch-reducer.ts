@@ -34,9 +34,9 @@ type UseRematchReducerProps = {
   plugins?: RematchReducerPlugin[]
 }
 
-export const useRematchReducer = (model: ModelConfig<any>, { plugins = [] }: UseRematchReducerProps) => {
-  const normalizedPlugins = plugins.map(plugin => PluginFactory.create(plugin))
-  const onInit = compose(normalizedPlugins.map(plugin => plugin.onInit))
+export const useRematchReducer = (model: ModelConfig<any>, props: UseRematchReducerProps = { plugins: [] }) => {
+  const normalizedPlugins = props.plugins?.map(plugin => PluginFactory.create(plugin)) || []
+  const onInit = compose(normalizedPlugins?.map(plugin => plugin.onInit))
   const stateRef = useRef(model.state)
   const initialState = onInit(model.state)
   const reducers = model.reducers
