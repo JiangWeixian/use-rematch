@@ -1,16 +1,21 @@
-# @use-rematch
+# @use-rematch/core
+<p>
+  <img alt="Version" src="https://img.shields.io/npm/v/@use-rematch/core?label=@use-rematch/core&logo=npm&style=for-the-badge" />
+  <a href="#" target="_blank">
+    <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge" />
+  </a>
+  <a href="https://twitter.com/jiangweixian" target="_blank">
+    <img alt="Twitter: jiangweixian" src="https://img.shields.io/twitter/follow/jiangweixian.svg?style=for-the-badge" />
+  </a>
+  <img alt="npm" src="https://img.shields.io/npm/dm/@use-rematch/core?style=for-the-badge">
+</p>
 
-- [@use-rematch](#use-rematch)
-  - [Packages](#packages)
+- [@use-rematch/core](#use-rematchcore)
   - [Install](#install)
   - [Usage](#usage)
-    - [@use-rematch/core](#use-rematchcore)
+  - [TODO](#todo)
   - [Author](#author)
   - [Show your support](#show-your-support)
-
-## Packages
-
-- [@use-rematch/core](https://www.npmjs.com/package/@use-rematch/core)
 
 ## Install
 
@@ -19,8 +24,6 @@ npm install @use-rematch/core
 ```
 
 ## Usage
-
-### @use-rematch/core
 
 ```tsx
 // import
@@ -71,6 +74,12 @@ const [state, dispatch] = useRematchReducer({
   </a>
 </div>
 ```
+
+see **full code** in [examples](/examples/src/pages/index.tsx)
+
+## TODO
+
+- [ ] - add test
 
 ## Author
 
