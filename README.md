@@ -8,6 +8,8 @@
   - [Author](#author)
   - [Show your support](#show-your-support)
 
+*use-rematch is a React hook lib, redefine the way how you write reducer*
+
 ## Packages
 
 - [@use-rematch/core](https://www.npmjs.com/package/@use-rematch/core)
@@ -22,11 +24,11 @@ npm install @use-rematch/core
 
 ### @use-rematch/core
 
+create hook in compnent without dispatch types
+
 ```tsx
-// import
 import { useRematchReducer } from '@use-rematch/core';
 
-// create hook in compnent
 const [state, dispatch] = useRematchReducer({
   name: 'use-rematch-reducer',
   state: {
@@ -57,8 +59,11 @@ const [state, dispatch] = useRematchReducer({
     },
   },
 });
+```
 
-// use in component
+use dispatchers and state in component
+
+```tsx
 <div>
   <a style={{ marginRight: '16px' }} onClick={() => dispatch.add()}>
     add

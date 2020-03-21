@@ -25,11 +25,11 @@ npm install @use-rematch/core
 
 ## Usage
 
+create hook in compnent without dispatch types
+
 ```tsx
-// import
 import { useRematchReducer } from '@use-rematch/core';
 
-// create hook in compnent
 const [state, dispatch] = useRematchReducer({
   name: 'use-rematch-reducer',
   state: {
@@ -60,8 +60,11 @@ const [state, dispatch] = useRematchReducer({
     },
   },
 });
+```
 
-// use in component
+use dispatchers and state in component
+
+```tsx
 <div>
   <a style={{ marginRight: '16px' }} onClick={() => dispatch.add()}>
     add
@@ -74,8 +77,6 @@ const [state, dispatch] = useRematchReducer({
   </a>
 </div>
 ```
-
-see **full code** in [examples](/examples/src/pages/index.tsx)
 
 ## TODO
 
