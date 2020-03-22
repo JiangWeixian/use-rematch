@@ -8,6 +8,10 @@ import {
   ExtractRematchGettersObject,
 } from '@rematch2/core'
 
+type UseRematchReducerProps<M> = {
+  plugins?: RematchReducerPlugin<M>[]
+}
+
 export function useRematchReducer<
   S,
   R extends ModelReducers<S>,
@@ -15,14 +19,15 @@ export function useRematchReducer<
   G extends ModelGetters<any>
 >(
   model: ModelDescriptor<S, R, E, G>,
+  props?: UseRematchReducerProps<ModelDescriptor<S, R, E, G>>,
 ): [
   ModelDescriptor<S, R, E, G>['state'],
   ExtractRematchDispatchersFromReducers<R> & ExtractRematchDispatchersFromEffects<E>,
   ExtractRematchGettersObject<G>,
 ]
 
-type RematchReducerPlugin = {
-  onInit: (initalState: any) => any
+type RematchReducerPlugin<M = any> = {
+  onInit: (model: M) => M
   onMiddlewarse: (state: any) => any
 }
 

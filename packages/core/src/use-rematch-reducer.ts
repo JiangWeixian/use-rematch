@@ -1,6 +1,6 @@
 import { useReducer, Reducer, useRef, useMemo } from 'react'
 import { ModelConfig } from '@rematch2/core'
-import { RematchReducerPlugin } from './types'
+import { UseRematchReducerProps } from './types'
 import { PluginFactory } from './plugins'
 import compose from 'lodash.flowright'
 
@@ -30,16 +30,13 @@ const applyMiddware = (rootReducer: Reducer<any, any>, callback: Function) => {
  * @param model ModelConfig<S>
  */
 
-type UseRematchReducerProps = {
-  plugins?: RematchReducerPlugin[]
-}
-
-export const useRematchReducer = (model: ModelConfig<any>, props: UseRematchReducerProps = { plugins: [] }) => {
+export const useRematchReducer = (model: ModelConfig<any>, props: UseRematchReducerProps<ModelConfig<any>> = { plugins: [] }) => {
   const normalizedPlugins = props.plugins?.map(plugin => PluginFactory.create(plugin)) || []
   const onInit = compose(normalizedPlugins?.map(plugin => plugin.onInit))
-  const stateRef = useRef(model.state)
-  const initialState = onInit(model.state)
-  const reducers = model.reducers
+  const normalziedModel: ModelConfig<any> = onInit(model)
+  const stateRef = useRef(normalziedModel.state)
+  const reducers = normalziedModel.reducers
+  const initialState = normalziedModel.state
   const reactReducers = (state = initialState, action: Action) => {
     if (!reducers) {
       return state
