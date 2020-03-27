@@ -11,4 +11,7 @@ export const PluginStore: RematchReducerPlugin = {
         }
       : model
   },
+  onMiddlewarse: model => {
+    store.set(model.name, model.state)
+  },
 }

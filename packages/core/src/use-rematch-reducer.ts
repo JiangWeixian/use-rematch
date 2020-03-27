@@ -36,7 +36,7 @@ export const useRematchReducer = (
 ) => {
   const normalizedPlugins = props.plugins?.map(plugin => PluginFactory.create(plugin)) || []
   const onInit = compose(normalizedPlugins?.map(plugin => plugin.onInit))
-  const onMiddleware = compose(normalizedPlugins?.map(plugin => plugin.onMiddlewarse))
+  const onMiddleware = compose(normalizedPlugins?.map(plugin => plugin.onMiddleware))
   const normalziedModel: ModelConfig<any> = onInit(model)
   const stateRef = useRef(normalziedModel.state)
   const reducers = normalziedModel.reducers
