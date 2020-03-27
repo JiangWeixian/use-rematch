@@ -5,16 +5,23 @@
   "module": "lib/plugin-store.esm.js",
   "browser": "lib/plugin-store.umd.js",
   "typings": "lib/index.d.ts",
+  "peerDependencies": {
+    "@use-rematch/core": "latest"
+  },
   "dependencies": {
-    "@use-rematch/core": "^0.0.5-alpha.3",
     "store2": "^2.11.0"
   },
   "devDependencies": {
+    "@testing-library/react-hooks": "3.2.1",
     "@types/jest": "24.0.22",
     "@types/ms": "0.7.31",
+    "@use-rematch/core": "0.0.5-alpha.3",
     "husky": "3.0.9",
     "jest": "24.9.0",
+    "jest-localstorage-mock": "2.4.0",
     "np": "5.1.3",
+    "react": "^16.13.1",
+    "react-test-renderer": "^16.13.1",
     "rimraf": "3.0.0",
     "rollup": "1.12.2",
     "rollup-plugin-alias": "2.0.0",
@@ -30,7 +37,7 @@
   "scripts": {
     "build": "rimraf lib && rollup -c",
     "dev": "rollup -c -w",
-    "test": "ts-node test/test.ts",
+    "test": "jest",
     "pretest": "npm run build",
     "update": "npm update && npm update --save-dev",
     "check": "npm outdated && npm outdated --save-dev"

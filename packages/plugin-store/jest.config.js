@@ -19,4 +19,5 @@ module.exports = {
   moduleFileExtensions: ['js', 'json', 'jsx', 'ts', 'tsx', 'node'],
   testRegex: '/test/.+\\.test\\.tsx?$',
   verbose: false,
+  setupFiles: ['jest-localstorage-mock'],
 }

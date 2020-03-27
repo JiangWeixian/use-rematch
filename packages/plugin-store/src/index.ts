@@ -1,21 +1,23 @@
 import { RematchReducerPlugin } from '@use-rematch/core'
-import store from 'store2'
 
 export const createPluginStore = (): RematchReducerPlugin => {
   let name: string = ''
   return {
     onInit: model => {
-      const state = store.get(model.name)
+      const state = localStorage.getItem(model.name)
       name = model.name
-      return state
-        ? {
-            ...model,
-            state,
-          }
-        : model
+      if (!state) {
+        localStorage.setItem(name, JSON.stringify(model.state))
+        return model
+      }
+      return {
+        ...model,
+        state: JSON.parse(state),
+      }
     },
     onMiddleware: state => {
-      store.set(name, state)
+      console.log(state)
+      localStorage.setItem(name, JSON.stringify(state))
     },
   }
 }
