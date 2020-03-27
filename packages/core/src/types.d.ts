@@ -30,4 +30,3 @@ type RematchReducerPlugin<M = any> = {
   onInit?: (model: M) => M
   onMiddlewarse?: (state: any) => any
 }
-

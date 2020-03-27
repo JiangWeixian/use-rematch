@@ -15,13 +15,13 @@ describe('plugins', () => {
 
   test('oninit could modify model', () => {
     const plugin = PluginFactory.create({
-      onInit: (model) => {
+      onInit: model => {
         return {
           ...model,
           state: {
             ...model.state,
-            text: 2
-          }
+            text: 2,
+          },
         }
       },
     })
@@ -29,7 +29,7 @@ describe('plugins', () => {
       name: 'plugin',
       state: {
         text: 1,
-      }
+      },
     }
     const nextmodel = plugin.onInit(model)
     expect(nextmodel.state.text).toBe(2)
@@ -38,7 +38,7 @@ describe('plugins', () => {
   test('onmiddleware should be called', () => {
     let cnt = 0
     const plugin = PluginFactory.create({
-      onMiddlewarse: (state) => {
+      onMiddlewarse: state => {
         cnt += 1
         return state
       },
@@ -47,7 +47,7 @@ describe('plugins', () => {
       name: 'plugin',
       state: {
         text: 1,
-      }
+      },
     }
     plugin.onMiddlewarse(model.state)
     expect(cnt).toBe(1)

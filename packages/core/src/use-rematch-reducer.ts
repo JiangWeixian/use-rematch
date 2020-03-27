@@ -30,7 +30,10 @@ const applyMiddware = (rootReducer: Reducer<any, any>, callback: Function) => {
  * @param model ModelConfig<S>
  */
 
-export const useRematchReducer = (model: ModelConfig<any>, props: UseRematchReducerProps<ModelConfig<any>> = { plugins: [] }) => {
+export const useRematchReducer = (
+  model: ModelConfig<any>,
+  props: UseRematchReducerProps<ModelConfig<any>> = { plugins: [] },
+) => {
   const normalizedPlugins = props.plugins?.map(plugin => PluginFactory.create(plugin)) || []
   const onInit = compose(normalizedPlugins?.map(plugin => plugin.onInit))
   const onMiddleware = compose(normalizedPlugins?.map(plugin => plugin.onMiddlewarse))
@@ -48,9 +51,12 @@ export const useRematchReducer = (model: ModelConfig<any>, props: UseRematchRedu
     return reducers[action.type](state, action.payload, action.meta)
   }
   const [state, dispatch] = useReducer(
-    applyMiddware(reactReducers, compose(onMiddleware, (v: any) => {
-      stateRef.current = v
-    })),
+    applyMiddware(
+      reactReducers,
+      compose(onMiddleware, (v: any) => {
+        stateRef.current = v
+      }),
+    ),
     initialState,
   )
   const getters = useMemo(() => {

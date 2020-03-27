@@ -1,4 +1,4 @@
-import { RematchReducerPlugin } from './types';
+import { RematchReducerPlugin } from './types'
 
 export const PluginFactory = {
   create(plugin: RematchReducerPlugin): Required<RematchReducerPlugin> {
@@ -8,7 +8,7 @@ export const PluginFactory = {
       },
       onMiddlewarse: (state: any) => {
         return plugin.onMiddlewarse?.(state) ?? state
-      }
+      },
     }
   },
 }

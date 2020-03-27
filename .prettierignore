@@ -27,3 +27,8 @@ Jenkinsfile
 *.watchmanconfig
 *.flowconfig
 LICENSE
+*.jpg
+*.gitkeep
+*.env
+*.editorconfig
+*.gif

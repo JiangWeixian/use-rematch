@@ -18,8 +18,8 @@ export default [
       resolve(), // so Rollup can find `ms`
       commonjs({
         namedExports: {
-          'react': Object.keys(react)
-        }
+          react: Object.keys(react),
+        },
       }), // so Rollup can convert `ms` to an ES module
       typescript({
         typescript: require('typescript'),
@@ -47,6 +47,9 @@ export default [
         entries: [{ find: '@/', replacement: './src/' }],
       }),
     ],
-    output: [{ file: pkg.main, format: 'cjs' }, { file: pkg.module, format: 'es' }],
+    output: [
+      { file: pkg.main, format: 'cjs' },
+      { file: pkg.module, format: 'es' },
+    ],
   },
 ]
