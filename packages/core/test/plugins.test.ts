@@ -4,7 +4,7 @@ describe('plugins', () => {
   test('oninit, onmiddleware should exit', () => {
     const plugin = PluginFactory.create({})
     expect(typeof plugin.onInit).toBe('function')
-    expect(typeof plugin.onMiddlewarse).toBe('function')
+    expect(typeof plugin.onMiddleware).toBe('function')
   })
 
   test('oninit should return model', () => {
