@@ -2,7 +2,7 @@ import { useReducer, Reducer, useRef, useMemo } from 'react'
 import { ModelConfig } from '@rematch2/core'
 import { UseRematchReducerProps } from './types'
 import { PluginFactory } from './plugin'
-import compose from 'lodash.flowright'
+import compose from 'lodash.flow'
 
 type Action = { type: string; payload: any; meta: any }
 const EMPTY_GETTERS = {}
@@ -36,7 +36,7 @@ export const useRematchReducer = (
 ) => {
   const normalizedPlugins = props.plugins?.map(plugin => PluginFactory.create(plugin)) || []
   const onInit = compose(normalizedPlugins?.map(plugin => plugin.onInit))
-  const onMiddleware = compose(normalizedPlugins?.map(plugin => plugin.onMiddlewarse))
+  const onMiddleware = compose(normalizedPlugins?.map(plugin => plugin.onMiddleware))
   const normalziedModel: ModelConfig<any> = onInit(model)
   const stateRef = useRef(normalziedModel.state)
   const reducers = normalziedModel.reducers

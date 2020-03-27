@@ -1,45 +1,51 @@
 import React from 'react';
 import styles from './index.css';
-import { useRematchReducer } from 'use-rematch-reducer';
+import { useRematchReducer } from '@use-rematch/core';
+const { createPluginStore } = require('@use-rematch/plugin-store');
+
+const PluginStore = createPluginStore();
 
 export default function() {
-  const [state, dispatch] = useRematchReducer({
-    name: 'use-rematch-reducer',
-    state: {
-      cnt: 0,
-      loading: false,
-    },
-    reducers: {
-      add: (state, payload?: number) => {
-        return {
-          ...state,
-          cnt: payload ? state.cnt + payload : state.cnt + 1,
-        };
+  const [state, dispatch] = useRematchReducer(
+    {
+      name: 'use-rematch-reducer',
+      state: {
+        cnt: 0,
+        loading: false,
       },
-      toggleLoading: state => {
-        return {
-          ...state,
-          loading: !state.loading,
-        };
+      reducers: {
+        add: (state, payload?: number) => {
+          return {
+            ...state,
+            cnt: payload ? state.cnt + payload : state.cnt + 1,
+          };
+        },
+        toggleLoading: state => {
+          return {
+            ...state,
+            loading: !state.loading,
+          };
+        },
       },
-    },
-    effects: {
-      async asyncAdd(payload: number) {
-        this.toggleLoading();
-        setTimeout(async () => {
-          this.add(payload);
+      effects: {
+        async asyncAdd(payload: number) {
           this.toggleLoading();
-        }, 1000);
-      },
-      async asyncNormlAdd(payload: number) {
-        this.toggleLoading();
-        setTimeout(async () => {
-          this.dispatch({ type: 'add', payload });
+          setTimeout(async () => {
+            this.add(payload);
+            this.toggleLoading();
+          }, 1000);
+        },
+        async asyncNormlAdd(payload: number) {
           this.toggleLoading();
-        }, 1000);
+          setTimeout(async () => {
+            this.dispatch({ type: 'add', payload });
+            this.toggleLoading();
+          }, 1000);
+        },
       },
     },
-  });
+    { plugins: [PluginStore] },
+  );
   return (
     <div className={styles.normal}>
       <h1>state</h1>

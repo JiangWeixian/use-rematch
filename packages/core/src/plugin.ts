@@ -10,8 +10,8 @@ export const PluginFactory = {
       onInit: (model: any) => {
         return plugin.onInit?.(model) ?? model
       },
-      onMiddlewarse: (state: any) => {
-        return plugin.onMiddlewarse?.(state) ?? state
+      onMiddleware: (state: any) => {
+        return plugin.onMiddleware?.(state) ?? state
       },
     }
   },

@@ -4,7 +4,7 @@ describe('plugins', () => {
   test('oninit, onmiddleware should exit', () => {
     const plugin = PluginFactory.create({})
     expect(typeof plugin.onInit).toBe('function')
-    expect(typeof plugin.onMiddlewarse).toBe('function')
+    expect(typeof plugin.onMiddleware).toBe('function')
   })
 
   test('oninit should return model', () => {
@@ -38,7 +38,7 @@ describe('plugins', () => {
   test('onmiddleware should be called', () => {
     let cnt = 0
     const plugin = PluginFactory.create({
-      onMiddlewarse: state => {
+      onMiddleware: state => {
         cnt += 1
         return state
       },
@@ -49,7 +49,7 @@ describe('plugins', () => {
         text: 1,
       },
     }
-    plugin.onMiddlewarse(model.state)
+    plugin.onMiddleware(model.state)
     expect(cnt).toBe(1)
   })
 })

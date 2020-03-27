@@ -1,4 +1,3 @@
-import react from 'react'
 import resolve from 'rollup-plugin-node-resolve'
 import commonjs from 'rollup-plugin-commonjs'
 import typescript from 'rollup-plugin-typescript2'
@@ -10,17 +9,13 @@ export default [
   // {
   //   input: 'src/index.ts',
   //   output: {
-  //     name: 'use-rematch-reducer',
+  //     name: 'plugin-store',
   //     file: pkg.browser,
   //     format: 'umd',
   //   },
   //   plugins: [
   //     resolve(), // so Rollup can find `ms`
-  //     commonjs({
-  //       namedExports: {
-  //         react: Object.keys(react),
-  //       },
-  //     }), // so Rollup can convert `ms` to an ES module
+  //     commonjs(), // so Rollup can convert `ms` to an ES module
   //     typescript({
   //       typescript: require('typescript'),
   //     }), // so Rollup can convert TypeScript to JavaScript

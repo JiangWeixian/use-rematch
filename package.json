@@ -27,7 +27,9 @@
   },
   "scripts": {
     "bootstrap": "lerna bootstrap",
+    "test": "lerna run test",
     "build": "lerna run build",
+    "publish": "npm run build && lerna publish",
     "prettier": "prettier --config .prettierrc --write '**/*'"
   },
   "husky": {
