@@ -5,6 +5,10 @@
   "module": "lib/plugin-store.esm.js",
   "browser": "lib/plugin-store.umd.js",
   "typings": "lib/index.d.ts",
+  "files": [
+    "src",
+    "lib"
+  ],
   "peerDependencies": {
     "@use-rematch/core": "latest"
   },
