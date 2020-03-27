@@ -2,7 +2,7 @@ import { useReducer, Reducer, useRef, useMemo } from 'react'
 import { ModelConfig } from '@rematch2/core'
 import { UseRematchReducerProps } from './types'
 import { PluginFactory } from './plugin'
-import compose from 'lodash.flowright'
+import compose from 'lodash.flow'
 
 type Action = { type: string; payload: any; meta: any }
 const EMPTY_GETTERS = {}
