@@ -7,29 +7,29 @@ import pkg from './package.json'
 
 export default [
   // browser-friendly UMD build
-  {
-    input: 'src/index.ts',
-    output: {
-      name: 'use-rematch-reducer',
-      file: pkg.browser,
-      format: 'umd',
-    },
-    plugins: [
-      resolve(), // so Rollup can find `ms`
-      commonjs({
-        namedExports: {
-          react: Object.keys(react),
-        },
-      }), // so Rollup can convert `ms` to an ES module
-      typescript({
-        typescript: require('typescript'),
-      }), // so Rollup can convert TypeScript to JavaScript
-      alias({
-        resolve: ['.ts', '.js', '.tsx', '.jsx'],
-        entries: [{ find: '@/', replacement: './src/' }],
-      }),
-    ],
-  },
+  // {
+  //   input: 'src/index.ts',
+  //   output: {
+  //     name: 'use-rematch-reducer',
+  //     file: pkg.browser,
+  //     format: 'umd',
+  //   },
+  //   plugins: [
+  //     resolve(), // so Rollup can find `ms`
+  //     commonjs({
+  //       namedExports: {
+  //         react: Object.keys(react),
+  //       },
+  //     }), // so Rollup can convert `ms` to an ES module
+  //     typescript({
+  //       typescript: require('typescript'),
+  //     }), // so Rollup can convert TypeScript to JavaScript
+  //     alias({
+  //       resolve: ['.ts', '.js', '.tsx', '.jsx'],
+  //       entries: [{ find: '@/', replacement: './src/' }],
+  //     }),
+  //   ],
+  // },
 
   // CommonJS (for Node) and ES module (for bundlers) build.
   // (We could have three entries in the configuration array
