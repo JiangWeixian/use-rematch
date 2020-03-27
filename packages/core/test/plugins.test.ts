@@ -38,7 +38,7 @@ describe('plugins', () => {
   test('onmiddleware should be called', () => {
     let cnt = 0
     const plugin = PluginFactory.create({
-      onMiddlewarse: state => {
+      onMiddleware: state => {
         cnt += 1
         return state
       },
@@ -49,7 +49,7 @@ describe('plugins', () => {
         text: 1,
       },
     }
-    plugin.onMiddlewarse(model.state)
+    plugin.onMiddleware(model.state)
     expect(cnt).toBe(1)
   })
 })
