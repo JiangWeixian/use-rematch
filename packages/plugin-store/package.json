@@ -1,12 +1,12 @@
 {
   "name": "@use-rematch/plugin-store",
-  "version": "0.0.0",
+  "version": "0.0.5-alpha.0",
   "main": "lib/plugin-store.cjs.js",
   "module": "lib/plugin-store.esm.js",
   "browser": "lib/plugin-store.umd.js",
   "typings": "lib/index.d.ts",
   "dependencies": {
-    "@use-rematch/core": "^0.0.4",
+    "@use-rematch/core": "^0.0.5-alpha.0",
     "store2": "^2.11.0"
   },
   "devDependencies": {
