@@ -26,7 +26,7 @@ export function useRematchReducer<
   ExtractRematchGettersObject<G>,
 ]
 
-type RematchReducerPlugin<M = any> = {
+export type RematchReducerPlugin<M = any> = {
   onInit?: (model: M) => M
   onMiddlewarse?: (state: any) => any
 }

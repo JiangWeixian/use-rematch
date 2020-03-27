@@ -5,7 +5,10 @@
   "module": "lib/plugin-store.esm.js",
   "browser": "lib/plugin-store.umd.js",
   "typings": "lib/index.d.ts",
-  "dependencies": {},
+  "dependencies": {
+    "@use-rematch/core": "^0.0.4",
+    "store2": "^2.11.0"
+  },
   "devDependencies": {
     "@types/jest": "24.0.22",
     "@types/ms": "0.7.31",
