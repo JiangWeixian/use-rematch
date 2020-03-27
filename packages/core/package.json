@@ -1,6 +1,6 @@
 {
   "name": "@use-rematch/core",
-  "version": "0.0.5-alpha.4",
+  "version": "0.0.5-alpha.8",
   "main": "lib/use-rematch-reducer.cjs.js",
   "module": "lib/use-rematch-reducer.esm.js",
   "browser": "lib/use-rematch-reducer.umd.js",
