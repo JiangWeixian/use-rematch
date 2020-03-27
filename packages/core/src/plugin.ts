@@ -1,3 +1,7 @@
+/**
+ * for reducer initize life cycle
+ */
+
 import { RematchReducerPlugin } from './types'
 
 export const PluginFactory = {
