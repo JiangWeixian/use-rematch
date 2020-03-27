@@ -1,6 +1,6 @@
 {
   "name": "@use-rematch/plugin-store",
-  "version": "0.0.5-alpha.5",
+  "version": "0.0.5-alpha.6",
   "main": "lib/plugin-store.cjs.js",
   "module": "lib/plugin-store.esm.js",
   "browser": "lib/plugin-store.umd.js",
