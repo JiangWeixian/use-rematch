@@ -16,7 +16,6 @@ export const createPluginStore = (): RematchReducerPlugin => {
       }
     },
     onMiddleware: state => {
-      console.log(state)
       localStorage.setItem(name, JSON.stringify(state))
     },
   }
