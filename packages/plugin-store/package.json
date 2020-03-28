@@ -10,7 +10,8 @@
     "lib"
   ],
   "peerDependencies": {
-    "@use-rematch/core": "latest"
+    "@use-rematch/core": "latest",
+    "react": "latest"
   },
   "devDependencies": {
     "@testing-library/react-hooks": "3.2.1",

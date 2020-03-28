@@ -26,7 +26,7 @@
     "useRematchReducer"
   ],
   "peerDependencies": {
-    "react": ">=16.9.0"
+    "react": "latest"
   },
   "dependencies": {
     "@rematch2/core": "0.2.1-alpha.0",
