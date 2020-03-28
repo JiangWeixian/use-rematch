@@ -1,67 +1,70 @@
 # @use-rematch
 
 - [@use-rematch](#use-rematch)
-  - [Packages](#packages)
-  - [Install](#install)
+  - [Introduction](#introduction)
+    - [Install](#install)
+    - [Features](#features)
   - [Usage](#usage)
-    - [@use-rematch/core](#use-rematchcore)
+    - [Basic usage](#basic-usage)
+    - [With plugin](#with-plugin)
+  - [Pcakges](#pcakges)
   - [Author](#author)
   - [Show your support](#show-your-support)
 
-*use-rematch is a React hook lib, redefine the way how you write reducer*
+*use-rematch is a React hook lib, redefine the way how you write reducer. It's totally wrote by typescript!*
 
-## Packages
+## Introduction
 
-- [@use-rematch/core](https://www.npmjs.com/package/@use-rematch/core)
-
-## Install
+### Install
 
 ```sh
 npm install @use-rematch/core
 ```
 
+### Features
+
+- 📦 No extra dispatch types
+- 🔢 Pluginable and hookable
+- 💗 Model is easy to reuse
+
 ## Usage
 
-### @use-rematch/core
+### Basic usage
 
-create hook in compnent without dispatch types
+you can create `reducer` without define **DISPATCH_TYPES**
 
 ```tsx
 import { useRematchReducer } from '@use-rematch/core';
 
-const [state, dispatch] = useRematchReducer({
-  name: 'use-rematch-reducer',
-  state: {
-    cnt: 0,
-    loading: false,
-  },
-  reducers: {
-    add: (state, payload?: number) => {
-      return {
-        ...state,
-        cnt: payload ? state.cnt + payload : state.cnt + 1,
-      };
+const useHook = () => {
+  const [state, dispatch] = useRematchReducer({
+    name: 'use-rematch-reducer',
+    state: {
+      cnt: 0,
     },
-    toggleLoading: (state) => {
-      return {
-        ...state,
-        loading: !state.loading,
-      };
+    reducers: {
+      add: (state, payload?: number) => {
+        return {
+          ...state,
+          cnt: payload ? state.cnt + payload : state.cnt + 1,
+        };
+      },
     },
-  },
-  effects: {
-    async asyncAdd(payload: number, state: State) {
-      this.toggleLoading();
-      setTimeout(async () => {
-        this.add(payload);
+    effects: {
+      async asyncAdd(payload: number, state: State) {
         this.toggleLoading();
-      }, 1000);
+        setTimeout(async () => {
+          this.add(payload);
+          this.toggleLoading();
+        }, 1000);
+      },
     },
-  },
-});
+  });
+  return { state, dispatch }
+}
 ```
 
-use dispatchers and state in component
+then use dispatchers and state in component. In this way, you can dispatch action like `dispatch.add` or **dispatch a async action `asyncAdd`** with intellicode
 
 ```tsx
 <div>
@@ -76,6 +79,40 @@ use dispatchers and state in component
   </a>
 </div>
 ```
+
+### With plugin
+
+you can use plugin to modify origianl model, for example, [@use-rematch/plugin-store](/packages/plugin-store) will init model state from localstorage, and store model.state to localstorage
+
+```tsx
+import { useRematchReducer } from '@use-rematch/core';
+import { createPluginStore } from '@use-rematch/plugin-store'
+
+const PluginStore = createPluginStore()
+
+const useHook = () => {
+  const [state, dispatch] = useRematchReducer({
+    name: 'use-rematch-reducer',
+    state: {
+      cnt: 0,
+      loading: false,
+    },
+    reducers: {
+      add: (state, payload?: number) => {
+        return {
+          ...state,
+          cnt: payload ? state.cnt + payload : state.cnt + 1,
+        };
+      },
+    },
+  }, { plugins: [PluginStore] });
+  return { state, dispatch }
+}
+```
+
+## Pcakges
+
+- [@use-rematch/core](https://www.npmjs.com/package/@use-rematch/core)
 
 ## Author
 
