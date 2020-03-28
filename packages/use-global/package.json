@@ -14,11 +14,14 @@
     "react": "latest"
   },
   "devDependencies": {
+    "@testing-library/react-hooks": "3.2.1",
     "@types/jest": "24.0.22",
-    "@types/lodash.remove": "^4.7.6",
+    "@types/lodash.remove": "4.7.6",
     "@types/react": "16.9.26",
+    "@use-rematch/core": "0.0.5-alpha.11",
     "jest": "24.9.0",
     "react": "16.13.1",
+    "react-test-renderer": "16.13.1",
     "rimraf": "3.0.0",
     "rollup": "1.12.2",
     "rollup-plugin-alias": "2.0.0",
@@ -43,7 +46,7 @@
     "check": "npm outdated && npm outdated --save-dev"
   },
   "dependencies": {
-    "lodash.remove": "^4.7.0"
+    "lodash.remove": "4.7.0"
   },
   "publishConfig": {
     "access": "public"
