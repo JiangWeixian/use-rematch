@@ -1,13 +1,13 @@
 {
-  "name": "@use-rematch/plugin-store",
-  "version": "0.0.5-alpha.12",
-  "main": "lib/plugin-store.cjs.js",
-  "module": "lib/plugin-store.esm.js",
-  "browser": "lib/plugin-store.umd.js",
+  "name": "@use-rematch/use-global",
+  "version": "0.0.5-alpha.13",
+  "main": "lib/use-global.cjs.js",
+  "module": "lib/use-global.esm.js",
+  "browser": "lib/use-global.umd.js",
   "typings": "lib/index.d.ts",
   "files": [
-    "src",
-    "lib"
+    "lib",
+    "src"
   ],
   "peerDependencies": {
     "@use-rematch/core": "latest",
@@ -16,13 +16,10 @@
   "devDependencies": {
     "@testing-library/react-hooks": "3.2.1",
     "@types/jest": "24.0.22",
-    "@types/ms": "0.7.31",
+    "@types/lodash.remove": "4.7.6",
     "@types/react": "16.9.26",
     "@use-rematch/core": "^0.0.5-alpha.12",
-    "husky": "3.0.9",
     "jest": "24.9.0",
-    "jest-localstorage-mock": "2.4.0",
-    "np": "5.1.3",
     "react": "16.13.1",
     "react-test-renderer": "16.13.1",
     "rimraf": "3.0.0",
@@ -38,7 +35,7 @@
     "tslint-config-prettier": "1.18.0",
     "tslint-plugin-prettier": "2.3.0",
     "tslint-react": "4.2.0",
-    "typescript": "3.8.3"
+    "typescript": "3.7.2"
   },
   "scripts": {
     "build": "rimraf lib && rollup -c",
@@ -47,6 +44,9 @@
     "pretest": "npm run build",
     "update": "npm update && npm update --save-dev",
     "check": "npm outdated && npm outdated --save-dev"
+  },
+  "dependencies": {
+    "lodash.remove": "4.7.0"
   },
   "publishConfig": {
     "access": "public"

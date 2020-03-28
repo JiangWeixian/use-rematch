@@ -7,6 +7,7 @@
   - [Usage](#usage)
     - [Basic usage](#basic-usage)
     - [With plugin](#with-plugin)
+    - [With hook](#with-hook)
   - [Pcakges](#pcakges)
   - [Author](#author)
   - [Show your support](#show-your-support)
@@ -109,6 +110,45 @@ const useHook = () => {
   return { state, dispatch }
 }
 ```
+
+### With hook
+
+with `useGlobal`, register model state to global namespace。
+
+```tsx
+import { useRematchReducer } from '@use-rematch/core';
+import { useGlobal } from '@use-rematch/use-global'
+
+const useHook = () => {
+  const [state, dispatch] = useRematchReducer({
+    name: 'use-rematch-reducer',
+    state: {
+      cnt: 0,
+      loading: false,
+    },
+    reducers: {
+      add: (state, payload?: number) => {
+        return {
+          ...state,
+          cnt: payload ? state.cnt + payload : state.cnt + 1,
+        };
+      },
+    },
+  }, { hooks: [useGlobal] });
+  return { state, dispatch }
+}
+```
+
+and then, you can fetch global state and dispatch with `useGlobalState and useGlobalDispatch`。**WARNING: state could be undefined**
+
+```tsx
+const OtherComponentsA = () => {
+  const state = useGlobalState('@use-rematch-core/use-global', s => s);
+  return <p>{state?.cnt}</p>;
+};
+```
+
+**NOTE:** *`useEffect(() => {}, [state, dispatch])` is another choice to reuse and subscribe the state*
 
 ## Pcakges
 
