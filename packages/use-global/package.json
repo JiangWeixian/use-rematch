@@ -1,6 +1,6 @@
 {
   "name": "@use-rematch/use-global",
-  "version": "0.0.5-alpha.10",
+  "version": "0.0.5-alpha.11",
   "main": "lib/use-global.cjs.js",
   "module": "lib/use-global.esm.js",
   "browser": "lib/use-global.umd.js",
