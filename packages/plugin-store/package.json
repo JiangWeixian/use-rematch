@@ -16,6 +16,7 @@
     "@testing-library/react-hooks": "3.2.1",
     "@types/jest": "24.0.22",
     "@types/ms": "0.7.31",
+    "@types/react": "^16.9.26",
     "@use-rematch/core": "0.0.5-alpha.9",
     "husky": "3.0.9",
     "jest": "24.9.0",
