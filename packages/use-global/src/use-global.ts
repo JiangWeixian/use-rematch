@@ -3,18 +3,24 @@ import remove from 'lodash.remove'
 
 export const store = {}
 
+const EMPTY_MODEL = {
+  callbacks: [],
+}
+
 export const useGlobal = (name: string, state: any, dispatch: any) => {
+  if (!store[name]) {
+    store[name] = EMPTY_MODEL
+  }
   useEffect(() => {
     store[name].state = state
     store[name].dispatch = dispatch
     store[name].callbacks?.forEach((updater: Function) => {
-      updater()
+      updater((prev: number) => prev + 1)
     })
-  }, [state])
+  }, [state, dispatch])
   useEffect(() => {
-    store[name] = {}
     return () => {
-      store[name] = undefined
+      store[name] = EMPTY_MODEL
     }
   }, [name])
 }
@@ -22,7 +28,7 @@ export const useGlobal = (name: string, state: any, dispatch: any) => {
 export const useGlobalState = (name: string, callback: (state: any) => any) => {
   const [clock, update] = useState(0)
   useEffect(() => {
-    store[name].callbacks = store[name].callbacks.concat(update)
+    store[name].callbacks = store[name]?.callbacks?.concat([update])
     return () => {
       remove(store[name].callbacks, callback => callback == update)
     }
@@ -38,7 +44,7 @@ export const useGlobalDispatch = (name: string, callback: (dispatch: object) => 
   const [clock, update] = useState(0)
   const dispatch = store[name].dispatch
   useEffect(() => {
-    store[name].callbacks = store[name].callbacks.concat(update)
+    store[name].callbacks = store[name]?.callbacks?.concat(update)
     return () => {
       remove(store[name].callbacks, callback => callback == update)
     }

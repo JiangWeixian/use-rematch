@@ -7,7 +7,7 @@
     "no-any": false,
     "ordered-imports": false,
     "file-name-casing": false,
-    "no-implicit-dependencies": [true, ["@"]],
+    "no-implicit-dependencies": [true, ["@", "@testing-library/react-hooks"]],
     "jsx-no-lambda": false,
     "react-this-binding-issue": false,
     "promise-must-complete": false,
