@@ -32,3 +32,5 @@ LICENSE
 *.env
 *.editorconfig
 *.gif
+jest
+*.log
