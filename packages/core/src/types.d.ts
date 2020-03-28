@@ -8,8 +8,9 @@ import {
   ExtractRematchGettersObject,
 } from '@rematch2/core'
 
-type UseRematchReducerProps<M> = {
+type UseRematchReducerProps<M extends ModelDescriptor<any, any, any, any> = any> = {
   plugins?: RematchReducerPlugin<M>[]
+  hooks?: RematchReducerHook<M>[]
 }
 
 export function useRematchReducer<
@@ -30,3 +31,10 @@ export type RematchReducerPlugin<M = any> = {
   onInit?: (model: M) => M
   onMiddleware?: (state: any) => any
 }
+
+export type RematchReducerHook<M extends ModelDescriptor<any, any, any, any> = any> = (
+  name: string,
+  state: M['state'],
+  dispatch: ExtractRematchDispatchersFromReducers<M['reducers']> &
+    ExtractRematchDispatchersFromEffects<M['effects']>,
+) => any
