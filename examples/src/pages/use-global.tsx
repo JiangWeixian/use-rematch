@@ -1,12 +1,12 @@
-import React from 'react';
-import styles from './index.css';
-import { useRematchReducer } from '@use-rematch/core';
-import { useGlobal, useGlobalState, useGlobalDispatch } from '@use-rematch/use-global';
+import React from 'react'
+import styles from './index.css'
+import { useRematchReducer } from '@use-rematch/core'
+import { useGlobal, useGlobalState, useGlobalDispatch } from '@use-rematch/use-global'
 
 const OtherComponentsA = () => {
-  const state = useGlobalState('@use-rematch-core/use-global', s => s);
-  return <p>{state?.cnt}</p>;
-};
+  const state = useGlobalState('@use-rematch-core/use-global', s => s)
+  return <p>{state && state.cnt}</p>
+}
 
 export default function() {
   const [state, dispatch] = useRematchReducer(
@@ -21,27 +21,27 @@ export default function() {
           return {
             ...state,
             cnt: payload ? state.cnt + payload : state.cnt + 1,
-          };
+          }
         },
         toggleLoading: state => {
           return {
             ...state,
             loading: !state.loading,
-          };
+          }
         },
       },
       effects: {
         async asyncAdd(payload: number) {
-          this.toggleLoading();
+          this.toggleLoading()
           setTimeout(async () => {
-            this.add(payload);
-            this.toggleLoading();
-          }, 1000);
+            this.add(payload)
+            this.toggleLoading()
+          }, 1000)
         },
       },
     },
     { hooks: [useGlobal] },
-  );
+  )
   return (
     <div className={styles.normal}>
       <h1>state</h1>
@@ -60,5 +60,5 @@ export default function() {
       <h1>come from global store</h1>
       <OtherComponentsA />
     </div>
-  );
+  )
 }
