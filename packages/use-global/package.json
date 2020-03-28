@@ -44,5 +44,9 @@
   },
   "dependencies": {
     "lodash.remove": "^4.7.0"
-  }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "gitHead": "0ab5a9de80a62cb7e79607df76eedca79b2fbba3"
 }
