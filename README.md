@@ -8,7 +8,7 @@
     - [Basic usage](#basic-usage)
     - [With plugin](#with-plugin)
     - [With hook](#with-hook)
-  - [Pcakges](#pcakges)
+  - [Packges](#pcakges)
   - [Author](#author)
   - [Show your support](#show-your-support)
 
@@ -150,7 +150,7 @@ const OtherComponentsA = () => {
 
 **NOTE:** *`useEffect(() => {}, [state, dispatch])` is another choice to reuse and subscribe the state*
 
-## Pcakges
+## Packges
 
 - [@use-rematch/core](https://www.npmjs.com/package/@use-rematch/core)
 
