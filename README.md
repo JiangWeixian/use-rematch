@@ -8,7 +8,7 @@
     - [Basic usage](#basic-usage)
     - [With plugin](#with-plugin)
     - [With hook](#with-hook)
-  - [Packges](#pcakges)
+  - [Packges](#packges)
   - [Author](#author)
   - [Show your support](#show-your-support)
 
@@ -153,6 +153,8 @@ const OtherComponentsA = () => {
 ## Packges
 
 - [@use-rematch/core](https://www.npmjs.com/package/@use-rematch/core)
+- [@use-rematch/plugin-store](https://www.npmjs.com/package/@use-rematch/plugin-store)
+- [@use-rematch/use-global](https://www.npmjs.com/package/@use-rematch/use-global)
 
 ## Author
 
