@@ -1,6 +1,6 @@
 {
   "name": "@use-rematch/core",
-  "version": "0.0.5-alpha.12",
+  "version": "0.0.5",
   "main": "lib/use-rematch-reducer.cjs.js",
   "module": "lib/use-rematch-reducer.esm.js",
   "browser": "lib/use-rematch-reducer.umd.js",
@@ -26,8 +26,8 @@
     "useRematchReducer"
   ],
   "peerDependencies": {
-    "react": "latest",
-    "@rematch2/core": "latest"
+    "@rematch2/core": "latest",
+    "react": "latest"
   },
   "dependencies": {
     "lodash.flow": "3.5.0"
