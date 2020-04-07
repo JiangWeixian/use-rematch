@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "@use-rematch/use-global": "0.0.5-alpha.13",
-    "@use-rematch/core": "0.0.5-alpha.12",
+    "@use-rematch/core": "../packages/core",
     "@use-rematch/plugin-store": "0.0.5-alpha.12",
     "react": "16.8.6",
     "react-dom": "16.8.6"
