@@ -1,4 +1,4 @@
-import { IConfig } from 'umi-types';
+import { IConfig } from 'umi-types'
 
 // ref: https://umijs.org/config/
 const config: IConfig = {
@@ -11,7 +11,7 @@ const config: IConfig = {
         antd: false,
         dva: false,
         dynamicImport: { webpackChunkName: true },
-        title: 'examples',
+        title: '@use-rematch',
         dll: false,
 
         routes: {
@@ -20,6 +20,6 @@ const config: IConfig = {
       },
     ],
   ],
-};
+}
 
-export default config;
+export default config
