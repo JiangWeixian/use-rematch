@@ -6,6 +6,7 @@
     - [Features](#features)
   - [Usage](#usage)
     - [Basic usage](#basic-usage)
+    - [Reuse model config](#reuse-model-config)
     - [With plugin](#with-plugin)
     - [With hook](#with-hook)
   - [Packges](#packges)
@@ -79,6 +80,42 @@ then use dispatchers and state in component. In this way, you can dispatch actio
     reduce
   </a>
 </div>
+```
+
+### Reuse model config
+> **for better type intelligence, recommend use `createModel`**
+
+```tsx
+import { createModel } from '@use-rematch/core'
+
+const model = createModel({
+  name: 'use-rematch-reducer',
+  state: {
+    cnt: 0,
+  },
+  reducers: {
+    add: (state, payload?: number) => {
+      return {
+        ...state,
+        cnt: payload ? state.cnt + payload : state.cnt + 1,
+      };
+    },
+  },
+  effects: {
+    async asyncAdd(payload: number, state: State) {
+      this.toggleLoading();
+      setTimeout(async () => {
+        this.add(payload);
+        this.toggleLoading();
+      }, 1000);
+    },
+  },
+})
+
+const useHook = () => {
+  const [state, dispatch] = useRematchReducer(model);
+  return { state, dispatch }
+}
 ```
 
 ### With plugin
