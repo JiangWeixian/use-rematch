@@ -13,7 +13,6 @@
 - [@use-rematch/core](#use-rematchcore)
   - [Install](#install)
   - [Usage](#usage)
-  - [TODO](#todo)
   - [Author](#author)
   - [Show your support](#show-your-support)
 
@@ -77,10 +76,6 @@ use dispatchers and state in component
   </a>
 </div>
 ```
-
-## TODO
-
-- [ ] - add test
 
 ## Author
 
