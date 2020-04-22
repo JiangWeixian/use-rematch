@@ -11,7 +11,8 @@
   ],
   "peerDependencies": {
     "@use-rematch/core": "latest",
-    "react": "latest"
+    "react": "latest",
+    "swr": "latest"
   },
   "devDependencies": {
     "@testing-library/react-hooks": "3.2.1",
@@ -28,6 +29,7 @@
     "rollup-plugin-commonjs": "10.0.0",
     "rollup-plugin-node-resolve": "5.0.0",
     "rollup-plugin-typescript2": "0.24.0",
+    "swr": "^0.2.0",
     "ts-jest": "24.1.0",
     "ts-node": "8.5.0",
     "tslib": "1.10.0",
