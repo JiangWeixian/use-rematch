@@ -1,6 +1,6 @@
-import React from 'react';
-import styles from './index.css';
-import { useRematchReducer } from '@use-rematch/core';
+import React from 'react'
+import styles from './index.css'
+import { useRematchReducer } from '@use-rematch/core'
 
 export default function() {
   const [state, dispatch] = useRematchReducer({
@@ -14,25 +14,25 @@ export default function() {
         return {
           ...state,
           cnt: payload ? state.cnt + payload : state.cnt + 1,
-        };
+        }
       },
       toggleLoading: state => {
         return {
           ...state,
           loading: !state.loading,
-        };
+        }
       },
     },
     effects: {
       async asyncAdd(payload: number) {
-        this.toggleLoading();
+        this.toggleLoading()
         setTimeout(async () => {
-          this.add(payload);
-          this.toggleLoading();
-        }, 1000);
+          this.add(payload)
+          this.toggleLoading()
+        }, 1000)
       },
     },
-  });
+  })
   return (
     <div className={styles.normal}>
       <h1>state</h1>
@@ -49,5 +49,5 @@ export default function() {
         </a>
       </div>
     </div>
-  );
+  )
 }

@@ -1,14 +1,19 @@
 import React from 'react'
 import styles from './index.css'
 import { useRematchReducer } from '@use-rematch/core'
-import { createPluginStore } from '@use-rematch/plugin-store'
+import { useGlobalSWR, useGlobalSWRState } from '@use-rematch/use-global'
+import { cache } from 'swr'
 
-const PluginStore = createPluginStore()
+const OtherComponentsA = () => {
+  const state = useGlobalSWRState('@use-rematch-core/use-global')
+  console.log(state)
+  return <p>{state && state.cnt}</p>
+}
 
 export default function() {
   const [state, dispatch] = useRematchReducer(
     {
-      name: '@use-rematch-core/plugin-store',
+      name: '@use-rematch-core/use-global',
       state: {
         cnt: 0,
         loading: false,
@@ -37,7 +42,7 @@ export default function() {
         },
       },
     },
-    { plugins: [PluginStore] },
+    { hooks: [useGlobalSWR] },
   )
   return (
     <div className={styles.normal}>
@@ -45,18 +50,17 @@ export default function() {
       <p>{state.loading ? 'loading' : state.cnt}</p>
       <div>
         <a style={{ marginRight: '16px' }} onClick={() => dispatch.add()}>
-          +
+          add
         </a>
         <a style={{ marginRight: '16px' }} onClick={() => dispatch.asyncAdd(1)}>
-          async + after 1s
+          async add after 1s
         </a>
         <a style={{ marginRight: '16px' }} onClick={() => dispatch.add(-1)}>
-          -
-        </a>
-        <a style={{ marginRight: '16px' }} onClick={() => window.location.reload()}>
-          refresh
+          reduce
         </a>
       </div>
+      <h1>come from global store</h1>
+      <OtherComponentsA />
     </div>
   )
 }
