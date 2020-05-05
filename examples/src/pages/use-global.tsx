@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './index.css'
-import { useRematchReducer } from '@use-rematch/core'
+import { useRematch } from '@use-rematch/core'
 import { useGlobal, useGlobalState, useGlobalDispatch } from '@use-rematch/use-global'
 
 const OtherComponentsA = () => {
@@ -9,7 +9,7 @@ const OtherComponentsA = () => {
 }
 
 export default function() {
-  const [state, dispatch] = useRematchReducer(
+  const { state, dispatch } = useRematch(
     {
       name: '@use-rematch-core/use-global',
       state: {
