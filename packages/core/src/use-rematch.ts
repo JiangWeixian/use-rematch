@@ -1,11 +1,10 @@
-import { useReducer, Reducer, useRef, useMemo } from 'react'
+import { useReducer, Reducer, useRef } from 'react'
 import { ModelConfig } from '@rematch2/core'
-import { UseRematchReducerProps } from './types'
+import { useRematchProps } from './types'
 import { PluginFactory } from './plugin'
 import compose from 'lodash.flow'
 
 type Action = { type: string; payload: any; meta: any }
-const EMPTY_GETTERS = {}
 
 function createDispatcher(this: any, reducerName: string) {
   return async (payload: any, meta: any): Promise<any> => {
@@ -30,17 +29,17 @@ const applyMiddware = (rootReducer: Reducer<any, any>, callback: Function) => {
  * @param model ModelConfig<S>
  */
 
-export const useRematchReducer = (
+export const useRematch = (
   model: ModelConfig<any>,
-  props: UseRematchReducerProps<ModelConfig<any>> = { plugins: [], hooks: [] },
+  props: useRematchProps<ModelConfig<any>> = { plugins: [], hooks: [] },
 ) => {
   const normalizedPlugins = props.plugins?.map(plugin => PluginFactory.create(plugin)) || []
   const onInit = compose(normalizedPlugins?.map(plugin => plugin.onInit))
   const onMiddleware = compose(normalizedPlugins?.map(plugin => plugin.onMiddleware))
   const normalziedModel: ModelConfig<any> = onInit(model)
-  const stateRef = useRef(normalziedModel.state)
-  const reducers = normalziedModel.reducers
   const initialState = normalziedModel.state
+  const stateRef = useRef(initialState)
+  const reducers = normalziedModel.reducers
   const reactReducers = (state = initialState, action: Action) => {
     if (!reducers) {
       return state
@@ -59,16 +58,6 @@ export const useRematchReducer = (
     ),
     initialState,
   )
-  const getters = useMemo(() => {
-    if (!model.getters || Object.keys(model.getters).length === 0) {
-      return EMPTY_GETTERS
-    }
-    const result = Object.assign(EMPTY_GETTERS, {})
-    for (const key in model.getters) {
-      result[key] = model.getters[key](state)
-    }
-    return result
-  }, [state, model.getters])
   const effects = model.effects
   if (reducers) {
     Object.keys(reducers).forEach(k => {
@@ -91,5 +80,8 @@ export const useRematchReducer = (
   props.hooks?.map(hook => {
     hook(model.name || '', state, dispatch as any)
   })
-  return [state, dispatch, getters]
+  return {
+    state,
+    dispatch,
+  }
 }

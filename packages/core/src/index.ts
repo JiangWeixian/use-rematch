@@ -1,2 +1,2 @@
-export { useRematchReducer } from './use-rematch-reducer'
-export { createModel } from '@rematch2/core'
+export { useRematch } from './use-rematch'
+export * from './helpers'

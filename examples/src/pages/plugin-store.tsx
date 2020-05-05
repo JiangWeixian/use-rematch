@@ -1,12 +1,12 @@
-import React from 'react';
-import styles from './index.css';
-import { useRematchReducer } from '@use-rematch/core';
-import { createPluginStore } from '@use-rematch/plugin-store';
+import React from 'react'
+import styles from './index.css'
+import { useRematch } from '@use-rematch/core'
+import { createPluginStore } from '@use-rematch/plugin-store'
 
-const PluginStore = createPluginStore();
+const PluginStore = createPluginStore()
 
 export default function() {
-  const [state, dispatch] = useRematchReducer(
+  const { state, dispatch } = useRematch(
     {
       name: '@use-rematch-core/plugin-store',
       state: {
@@ -18,27 +18,27 @@ export default function() {
           return {
             ...state,
             cnt: payload ? state.cnt + payload : state.cnt + 1,
-          };
+          }
         },
         toggleLoading: state => {
           return {
             ...state,
             loading: !state.loading,
-          };
+          }
         },
       },
       effects: {
         async asyncAdd(payload: number) {
-          this.toggleLoading();
+          this.toggleLoading()
           setTimeout(async () => {
-            this.add(payload);
-            this.toggleLoading();
-          }, 1000);
+            this.add(payload)
+            this.toggleLoading()
+          }, 1000)
         },
       },
     },
     { plugins: [PluginStore] },
-  );
+  )
   return (
     <div className={styles.normal}>
       <h1>state</h1>
@@ -58,5 +58,5 @@ export default function() {
         </a>
       </div>
     </div>
-  );
+  )
 }

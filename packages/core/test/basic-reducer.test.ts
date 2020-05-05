@@ -1,10 +1,10 @@
-import { useRematchReducer } from '../src/use-rematch-reducer'
+import { useRematch } from '../src/use-rematch'
 import { renderHook } from '@testing-library/react-hooks'
 
 describe('basic usage of use-rematch-reducer', () => {
   test('state init should work fine', () => {
     const hook = renderHook(() =>
-      useRematchReducer({
+      useRematch({
         name: 'hook',
         state: {
           text: 1,
@@ -19,7 +19,7 @@ describe('basic usage of use-rematch-reducer', () => {
 
   test('reducer and effect should be initilzed correct', () => {
     const hook = renderHook(() =>
-      useRematchReducer({
+      useRematch({
         name: 'hook',
         state: {
           text: 1,
@@ -40,7 +40,7 @@ describe('basic usage of use-rematch-reducer', () => {
 
   test('reducer and effect should work correct', async () => {
     const hook = renderHook(() =>
-      useRematchReducer({
+      useRematch({
         name: 'hook',
         state: {
           text: 1,
@@ -68,7 +68,7 @@ describe('basic usage of use-rematch-reducer', () => {
 
   test('getters should work fine', async () => {
     const hook = renderHook(() =>
-      useRematchReducer({
+      useRematch({
         name: 'hook',
         state: {
           text: 1,

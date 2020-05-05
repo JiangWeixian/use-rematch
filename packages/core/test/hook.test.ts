@@ -1,4 +1,4 @@
-import { useRematchReducer } from '../src/use-rematch-reducer'
+import { useRematch } from '../src/use-rematch'
 import { renderHook } from '@testing-library/react-hooks'
 
 describe('hook', () => {
@@ -10,7 +10,7 @@ describe('hook', () => {
       dispatch = d
     }
     renderHook(() =>
-      useRematchReducer(
+      useRematch(
         {
           name: 'hook',
           state: {
@@ -36,7 +36,7 @@ describe('hook', () => {
       dispatch = d
     }
     const { result } = renderHook(() =>
-      useRematchReducer(
+      useRematch(
         {
           name: 'hook',
           state: {

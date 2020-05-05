@@ -1,10 +1,10 @@
 import React from 'react'
 import styles from './index.css'
-import { useRematchReducer } from '@use-rematch/core'
+import { useRematch } from '@use-rematch/core'
 import { countdonw } from '../models/countdonw'
 
 export default function() {
-  const [state, dispatch] = useRematchReducer(countdonw)
+  const { state, dispatch } = useRematch(countdonw)
   return (
     <div className={styles.normal}>
       <h1>state</h1>
