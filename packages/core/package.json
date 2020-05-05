@@ -26,11 +26,9 @@
     "useRematchReducer"
   ],
   "peerDependencies": {
-    "@rematch2/core": "latest",
     "react": "latest"
   },
   "dependencies": {
-    "@rematch/core": "^1.4.0",
     "lodash.flow": "3.5.0"
   },
   "devDependencies": {

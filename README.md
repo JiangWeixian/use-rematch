@@ -1,37 +1,37 @@
 # @use-rematch
 
 - [@use-rematch](#use-rematch)
-  - [Introduction](#introduction)
-    - [Install](#install)
-    - [Features](#features)
-  - [Usage](#usage)
-    - [Basic usage](#basic-usage)
-    - [Reuse model config](#reuse-model-config)
-    - [With plugin](#with-plugin)
-    - [With hook](#with-hook)
+  - [introduction](#introduction)
+    - [install](#install)
+    - [features](#features)
+  - [usage](#usage)
+    - [basic usage](#basic-usage)
+    - [reuse model config](#reuse-model-config)
+    - [with plugin](#with-plugin)
+    - [with hook](#with-hook)
   - [Packges](#packges)
   - [Author](#author)
   - [Show your support](#show-your-support)
 
 *use-rematch is a React hook lib, redefine the way how you write reducer. It's totally wrote by typescript!*
 
-## Introduction
+## introduction
 
-### Install
+### install
 
 ```sh
 npm install @use-rematch/core
 ```
 
-### Features
+### features
 
 - 📦 No extra dispatch types
 - 🔢 Pluginable and hookable
 - 💗 Model is easy to reuse
 
-## Usage
+## usage
 
-### Basic usage
+### basic usage
 
 you can create `reducer` without define **DISPATCH_TYPES**
 
@@ -82,7 +82,7 @@ then use dispatchers and state in component. In this way, you can dispatch actio
 </div>
 ```
 
-### Reuse model config
+### reuse model config
 > **for better type intelligence, recommend use `createModel`**
 
 ```tsx
@@ -118,7 +118,7 @@ const useHook = () => {
 }
 ```
 
-### With plugin
+### with plugin
 
 you can use plugin to modify origianl model, for example, [@use-rematch/plugin-store](/packages/plugin-store) will init model state from localstorage, and store model.state to localstorage
 
@@ -148,7 +148,7 @@ const useHook = () => {
 }
 ```
 
-### With hook
+### with hook
 
 with `useGlobal`, register model state to global namespace。
 
