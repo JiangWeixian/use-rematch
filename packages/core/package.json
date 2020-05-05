@@ -30,6 +30,7 @@
     "react": "latest"
   },
   "dependencies": {
+    "@rematch/core": "^1.4.0",
     "lodash.flow": "3.5.0"
   },
   "devDependencies": {
