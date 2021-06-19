@@ -36,10 +36,10 @@ npm install @use-rematch/core
 you can create `reducer` without define **DISPATCH_TYPES**
 
 ```tsx
-import { useRematchReducer } from '@use-rematch/core';
+import { useRematch } from '@use-rematch/core';
 
 const useHook = () => {
-  const [state, dispatch] = useRematchReducer({
+  const { state, dispatch } = useRematch({
     name: 'use-rematch-reducer',
     state: {
       cnt: 0,
@@ -113,7 +113,7 @@ const model = createModel({
 })
 
 const useHook = () => {
-  const [state, dispatch] = useRematchReducer(model);
+  const { state, dispatch } = useRematch(model);
   return { state, dispatch }
 }
 ```
@@ -123,13 +123,13 @@ const useHook = () => {
 you can use plugin to modify origianl model, for example, [@use-rematch/plugin-store](/packages/plugin-store) will init model state from localstorage, and store model.state to localstorage
 
 ```tsx
-import { useRematchReducer } from '@use-rematch/core';
+import { useRematch } from '@use-rematch/core';
 import { createPluginStore } from '@use-rematch/plugin-store'
 
 const PluginStore = createPluginStore()
 
 const useHook = () => {
-  const [state, dispatch] = useRematchReducer({
+  const { state, dispatch } = useRematch({
     name: 'use-rematch-reducer',
     state: {
       cnt: 0,
@@ -153,11 +153,11 @@ const useHook = () => {
 with `useGlobal`, register model state to global namespace。
 
 ```tsx
-import { useRematchReducer } from '@use-rematch/core';
+import { useRematch } from '@use-rematch/core';
 import { useGlobal } from '@use-rematch/use-global'
 
 const useHook = () => {
-  const [state, dispatch] = useRematchReducer({
+  const { state, dispatch } = useRematch({
     name: 'use-rematch-reducer',
     state: {
       cnt: 0,
@@ -185,7 +185,7 @@ const OtherComponentsA = () => {
 };
 ```
 
-**NOTE:** *`useEffect(() => {}, [state, dispatch])` is another choice to reuse and subscribe the state*
+**NOTE:** *`useEffect(() => {}, { state, dispatch })` is another choice to reuse and subscribe the state*
 
 ## Packges
 
