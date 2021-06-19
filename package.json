@@ -21,9 +21,11 @@
     "react": ">=16.9.0"
   },
   "devDependencies": {
+    "@aiou/eslint-config": "^0.0.12",
+    "eslint": "^7.29.0",
     "lerna": "3.20.2",
-    "prettier": "1.19.1",
-    "pretty-quick": "2.0.1",
+    "prettier": "^2.3.1",
+    "pretty-quick": "^3.1.1",
     "typescript": "3.8.3"
   },
   "scripts": {
@@ -36,6 +38,11 @@
   "husky": {
     "hooks": {
       "pre-commit": "pretty-quick --staged"
+    }
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-emoji"
     }
   },
   "publishConfig": {
