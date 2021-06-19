@@ -24,9 +24,8 @@ export type ExtractRematchDispatchersFromEffectsObject<effects extends ModelEffe
   [effectKey in keyof effects]: ExtractRematchDispatcherAsyncFromEffect<effects[effectKey]>
 }
 
-export type ExtractRematchDispatchersFromEffects<
-  effects extends ModelConfig['effects']
-> = effects extends ModelEffects<any> ? ExtractRematchDispatchersFromEffectsObject<effects> : {}
+export type ExtractRematchDispatchersFromEffects<effects extends ModelConfig['effects']> =
+  effects extends ModelEffects<any> ? ExtractRematchDispatchersFromEffectsObject<effects> : {}
 
 export type ExtractRematchDispatcherFromReducer<R> = R extends () => any
   ? RematchDispatcher<void, void>
@@ -42,14 +41,12 @@ export type ExtractRematchDispatchersFromReducersObject<reducers extends ModelRe
   [reducerKey in keyof reducers]: ExtractRematchDispatcherFromReducer<reducers[reducerKey]>
 }
 
-export type ExtractRematchDispatchersFromReducers<
-  reducers extends ModelReducers<any>
-> = ExtractRematchDispatchersFromReducersObject<reducers & {}>
+export type ExtractRematchDispatchersFromReducers<reducers extends ModelReducers<any>> =
+  ExtractRematchDispatchersFromReducersObject<reducers & {}>
 
-export type ExtractRematchDispatchersFromModel<
-  M extends ModelConfig
-> = ExtractRematchDispatchersFromReducers<M['reducers']> &
-  ExtractRematchDispatchersFromEffects<M['effects']>
+export type ExtractRematchDispatchersFromModel<M extends ModelConfig> =
+  ExtractRematchDispatchersFromReducers<M['reducers']> &
+    ExtractRematchDispatchersFromEffects<M['effects']>
 
 export type RematchDispatcher<P = void, M = void> = [P] extends [void]
   ? (...args: any[]) => Action<any, any>
@@ -65,15 +62,9 @@ export type RematchDispatcherAsync<P = void, M = void, R = void> = ([P] extends 
   ((action: Action<P, M>) => Promise<R>) &
   ((action: Action<P, void>) => Promise<R>)
 
-export type ModelDescriptor<
-  S,
-  R extends ModelReducers<any>,
-  E extends ModelEffects<any>,
-  SS = S
-> = {
+export type ModelDescriptor<S, R extends ModelReducers<any>, E extends ModelEffects<any>> = {
   name?: string
   state: S
-  baseReducer?: (state: SS, action: Action) => SS
   reducers?: R
   effects?: E &
     ThisType<
@@ -101,27 +92,25 @@ type ModelEffects<S> = {
   [key: string]: (payload: any, rootState: any, currentState: S) => void
 }
 
-export interface Model<S = any, SS = S> extends ModelConfig<S, SS> {
+export interface Model<S = any> extends ModelConfig<S> {
   name: string
   reducers: ModelReducers<S>
 }
 
 export interface ModelConfig<
   S = any,
-  SS = S,
   R extends ModelReducers<any> = any,
-  E extends ModelEffects<any> = any
+  E extends ModelEffects<any> = any,
 > {
   name?: string
   state: S
   lifecyle?: LifeCycle
-  baseReducer?: (state: SS, action: Action) => SS
   reducers?: R
   effects?: E
 }
 
 // use-rematch
-export type useRematchProps<M extends ModelDescriptor<any, any, any, any> = any> = {
+export type useRematchProps<M extends ModelDescriptor<any, any, any> = any> = {
   plugins?: RematchReducerPlugin<M>[]
   hooks?: RematchReducerHook<M>[]
 }
@@ -130,14 +119,14 @@ export function useRematch<S, R extends ModelReducers<S>, E extends ModelEffects
   model: ModelDescriptor<S, R, E>,
   props?: useRematchProps<ModelDescriptor<S, R, E>>,
 ): {
-  state: ModelConfig<S>['state']
+  state: ModelDescriptor<S, R, E>['state']
   dispatch: ExtractRematchDispatchersFromReducers<R> & ExtractRematchDispatchersFromEffects<E>
 }
 export function useRematch<S, R extends ModelReducers<S>, E extends ModelEffects<S>>(
-  model: ModelConfig<S>,
+  model: ModelConfig<S, R, E>,
   props?: useRematchProps<ModelDescriptor<S, R, E>>,
 ): {
-  state: ModelConfig<S>['state']
+  state: ModelConfig<S, R, E>['state']
   dispatch: ExtractRematchDispatchersFromReducers<R> & ExtractRematchDispatchersFromEffects<E>
 }
 
@@ -146,7 +135,7 @@ export type RematchReducerPlugin<M = any> = {
   onMiddleware?: (state: any) => any
 }
 
-export type RematchReducerHook<M extends ModelDescriptor<any, any, any, any> = any> = (
+export type RematchReducerHook<M extends ModelDescriptor<any, any, any> = any> = (
   name: string,
   state: M['state'],
   dispatch: ExtractRematchDispatchersFromReducers<M['reducers']> &
@@ -155,4 +144,4 @@ export type RematchReducerHook<M extends ModelDescriptor<any, any, any, any> = a
 
 export function createModel<S, R extends ModelReducers<S>, E extends ModelEffects<S>>(
   model: ModelDescriptor<S, R, E>,
-): ModelConfig<S, any, R, E>
+): ModelConfig<S, R, E>

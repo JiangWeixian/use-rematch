@@ -1,5 +1,5 @@
 import * as R from '../types'
 
-export function createModel<S, SS>(model: R.ModelDescriptor<S, any, any, SS>) {
+export function createModel<S>(model: R.ModelDescriptor<S, any, any>) {
   return model
 }
