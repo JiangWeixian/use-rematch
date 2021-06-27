@@ -2,22 +2,22 @@
 
 *save state to localstorage and recover from localstorage*
 
-## Install
+## install
 
 ```bash
 npm install @use-rematch/core @use-rematch/plugin-store
 ```
 
-## Usage
+## usage
 
 ```tsx
-import { useRematchReducer } from '@use-rematch/core';
+import { useRematch } from '@use-rematch/core';
 import { createPluginStore } from '@use-rematch/plugin-store'
 
 const PluginStore = createPluginStore()
 
 const useHook = () => {
-  const [state, dispatch] = useRematchReducer({
+  const { state, dispatch } = useRematch({
     name: 'use-rematch-reducer',
     state: {
       cnt: 0,
