@@ -26,7 +26,7 @@ describe('plugin-store', () => {
       ),
     )
     expect(result.current.state.text).toBe(1)
-    result.current[1].set(2)
+    result.current.dispatch.set(2)
     expect(result.current.state.text).toBe(2)
     expect(localStorage.setItem).toHaveBeenLastCalledWith('hook', '{"text":2}')
   })
