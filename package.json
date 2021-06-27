@@ -15,7 +15,8 @@
     "redux",
     "hooks",
     "useReducer",
-    "useRematchReducer"
+    "useRematchReducer",
+    "useRematch"
   ],
   "peerDependencies": {
     "react": ">=16.9.0"

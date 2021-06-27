@@ -14,7 +14,7 @@ function createDispatcher(this: any, reducerName: string) {
   }
 }
 
-const applyMiddware = (rootReducer: Reducer<any, any>, callback: Function) => {
+const applyMiddleware = (rootReducer: Reducer<any, any>, callback: Function) => {
   return (state: any, action: Action) => {
     const nextState = rootReducer(state, action)
     if (callback) {
@@ -33,13 +33,13 @@ export const useRematch = (
   model: ModelConfig<any>,
   props: useRematchProps<ModelConfig<any>> = { plugins: [], hooks: [] },
 ) => {
-  const normalizedPlugins = props.plugins?.map(plugin => PluginFactory.create(plugin)) || []
-  const onInit = compose(normalizedPlugins?.map(plugin => plugin.onInit))
-  const onMiddleware = compose(normalizedPlugins?.map(plugin => plugin.onMiddleware))
-  const normalziedModel: ModelConfig<any> = onInit(model)
-  const initialState = normalziedModel.state
+  const normalizedPlugins = props.plugins?.map((plugin) => PluginFactory.create(plugin)) || []
+  const onInit = compose(normalizedPlugins?.map((plugin) => plugin.onInit))
+  const onMiddleware = compose(normalizedPlugins?.map((plugin) => plugin.onMiddleware))
+  const normalizedModel: ModelConfig<any> = onInit(model)
+  const initialState = normalizedModel.state
   const stateRef = useRef(initialState)
-  const reducers = normalziedModel.reducers
+  const reducers = normalizedModel.reducers
   const reactReducers = (state = initialState, action: Action) => {
     if (!reducers) {
       return state
@@ -50,7 +50,7 @@ export const useRematch = (
     return reducers[action.type](state, action.payload, action.meta)
   }
   const [state, dispatch] = useReducer(
-    applyMiddware(
+    applyMiddleware(
       reactReducers,
       compose(onMiddleware, (v: any) => {
         stateRef.current = v
@@ -60,7 +60,7 @@ export const useRematch = (
   )
   const effects = model.effects
   if (reducers) {
-    Object.keys(reducers).forEach(k => {
+    Object.keys(reducers).forEach((k) => {
       dispatch[k] = createDispatcher.call(dispatch, k)
     })
   }
@@ -68,7 +68,7 @@ export const useRematch = (
     return stateRef.current
   }
   if (effects) {
-    Object.keys(effects).forEach(k => {
+    Object.keys(effects).forEach((k) => {
       const effect = effects[k].bind(dispatch as any)
       dispatch[k] = async (payload: any) => {
         const currentState = getStore()
@@ -77,7 +77,7 @@ export const useRematch = (
     })
   }
   dispatch['dispatch'] = dispatch
-  props.hooks?.map(hook => {
+  props.hooks?.map((hook) => {
     hook(model.name || '', state, dispatch as any)
   })
   return {

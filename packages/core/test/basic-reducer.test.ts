@@ -1,7 +1,7 @@
 import { useRematch } from '../src/use-rematch'
 import { renderHook } from '@testing-library/react-hooks'
 
-describe('basic usage of use-rematch-reducer', () => {
+describe('basic usage of use-rematch', () => {
   test('state init should work fine', () => {
     const hook = renderHook(() =>
       useRematch({
@@ -10,7 +10,7 @@ describe('basic usage of use-rematch-reducer', () => {
           text: 1,
         } as { text: number },
         reducers: {
-          set: v => v,
+          set: (v) => v,
         },
       }),
     )
@@ -25,7 +25,7 @@ describe('basic usage of use-rematch-reducer', () => {
           text: 1,
         } as { text: number },
         reducers: {
-          set: v => v,
+          set: (v) => v,
         },
         effects: {
           async asyncSet(this: any, payload) {
