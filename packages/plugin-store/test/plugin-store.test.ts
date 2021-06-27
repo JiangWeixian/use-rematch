@@ -1,5 +1,5 @@
 import { createPluginStore } from '../src/index'
-import { useRematchReducer } from '@use-rematch/core'
+import { useRematch } from '@use-rematch/core'
 import { renderHook } from '@testing-library/react-hooks'
 
 const plugin = createPluginStore()
@@ -7,7 +7,7 @@ const plugin = createPluginStore()
 describe('plugin-store', () => {
   test('plugin should work fine', async () => {
     const { result } = renderHook(() =>
-      useRematchReducer(
+      useRematch(
         {
           name: 'hook',
           state: {
@@ -25,9 +25,9 @@ describe('plugin-store', () => {
         { plugins: [plugin] },
       ),
     )
-    expect(result.current[0].text).toBe(1)
+    expect(result.current.state.text).toBe(1)
     result.current[1].set(2)
-    expect(result.current[0].text).toBe(2)
+    expect(result.current.state.text).toBe(2)
     expect(localStorage.setItem).toHaveBeenLastCalledWith('hook', '{"text":2}')
   })
 })

@@ -17,7 +17,7 @@ describe('hook', () => {
             text: 1,
           } as { text: number },
           reducers: {
-            set: v => v,
+            set: (v) => v,
           },
         },
         { hooks: [useSub] },
@@ -35,7 +35,7 @@ describe('hook', () => {
       state = s
       dispatch = d
     }
-    const { result } = renderHook(() =>
+    const hook = renderHook(() =>
       useRematch(
         {
           name: 'hook',
@@ -54,7 +54,7 @@ describe('hook', () => {
         { hooks: [useSub] },
       ),
     )
-    result.current[1].set({ text: 2 })
+    ;(hook.result.current.dispatch as any).set({ text: 2 })
     expect(name).toBe('hook')
     expect(state.text).toBe(2)
     expect(dispatch.set).toBeDefined()

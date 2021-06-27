@@ -14,7 +14,7 @@ describe('basic usage of use-rematch', () => {
         },
       }),
     )
-    expect(hook.result.current[0].text).toBe(1)
+    expect(hook.result.current.state.text).toBe(1)
   })
 
   test('reducer and effect should be initilzed correct', () => {
@@ -34,8 +34,8 @@ describe('basic usage of use-rematch', () => {
         },
       }),
     )
-    expect(typeof hook.result.current[1].set).toBe('function')
-    expect(typeof hook.result.current[1].asyncSet).toBe('function')
+    expect(typeof (hook.result.current.dispatch as any).set).toBe('function')
+    expect(typeof (hook.result.current.dispatch as any).asyncSet).toBe('function')
   })
 
   test('reducer and effect should work correct', async () => {
@@ -60,9 +60,9 @@ describe('basic usage of use-rematch', () => {
         },
       }),
     )
-    hook.result.current[1].set({ text: 2 })
-    expect(hook.result.current[0].text).toBe(2)
-    hook.result.current[1].asyncSet({ text: 3 })
-    expect(hook.result.current[0].text).toBe(3)
+    ;(hook.result.current.dispatch as any).set({ text: 2 })
+    expect(hook.result.current.state.text).toBe(2)
+    ;(hook.result.current.dispatch as any).asyncSet({ text: 3 })
+    expect(hook.result.current.state.text).toBe(3)
   })
 })

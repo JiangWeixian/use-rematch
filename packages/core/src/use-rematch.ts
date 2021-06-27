@@ -1,6 +1,5 @@
 import { useReducer, Reducer, useRef } from 'react'
-import { ModelConfig } from '@rematch2/core'
-import { useRematchProps } from './types'
+import { useRematchProps, ModelConfig } from './types'
 import { PluginFactory } from './plugin'
 import compose from 'lodash.flow'
 
@@ -78,6 +77,7 @@ export const useRematch = (
   }
   dispatch['dispatch'] = dispatch
   props.hooks?.map((hook) => {
+    console.log(model.name, state)
     hook(model.name || '', state, dispatch as any)
   })
   return {
