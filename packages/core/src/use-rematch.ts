@@ -30,7 +30,7 @@ const applyMiddleware = (rootReducer: Reducer<any, any>, callback: Function) => 
 
 export const useRematch = (
   model: ModelConfig<any>,
-  props: useRematchProps<ModelConfig<any>> = { plugins: [], hooks: [] },
+  props: useRematchProps<ModelConfig<any>> = { plugins: [] },
 ) => {
   const normalizedPlugins = props.plugins?.map((plugin) => PluginFactory.create(plugin)) || []
   const onInit = compose(normalizedPlugins?.map((plugin) => plugin.onInit))
@@ -76,10 +76,6 @@ export const useRematch = (
     })
   }
   dispatch['dispatch'] = dispatch
-  props.hooks?.map((hook) => {
-    console.log(model.name, state)
-    hook(model.name || '', state, dispatch as any)
-  })
   return {
     state,
     dispatch,

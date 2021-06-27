@@ -112,7 +112,6 @@ export interface ModelConfig<
 // use-rematch
 export type useRematchProps<M extends ModelDescriptor<any, any, any> = any> = {
   plugins?: RematchReducerPlugin<M>[]
-  hooks?: RematchReducerHook<M>[]
 }
 
 export function useRematch<S, R extends ModelReducers<S>, E extends ModelEffects<S>>(
