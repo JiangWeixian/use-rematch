@@ -65,31 +65,4 @@ describe('basic usage of use-rematch', () => {
     hook.result.current[1].asyncSet({ text: 3 })
     expect(hook.result.current[0].text).toBe(3)
   })
-
-  test('getters should work fine', async () => {
-    const hook = renderHook(() =>
-      useRematch({
-        name: 'hook',
-        state: {
-          text: 1,
-        } as { text: number },
-        reducers: {
-          set(v, payload) {
-            return {
-              ...v,
-              ...payload,
-            }
-          },
-        },
-        getters: {
-          bigthanzero(state) {
-            return state.text > 0
-          },
-        },
-      }),
-    )
-    expect(hook.result.current[2].bigthanzero).toBe(true)
-    hook.result.current[1].set({ text: 0 })
-    expect(hook.result.current[2].bigthanzero).toBe(false)
-  })
 })
