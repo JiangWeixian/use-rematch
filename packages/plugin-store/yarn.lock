@@ -603,10 +603,10 @@
   dependencies:
     "@types/yargs-parser" "*"
 
-"@use-rematch/core@^0.0.6-alpha.1":
-  version "0.0.6-alpha.1"
-  resolved "https://registry.npmjs.org/@use-rematch/core/-/core-0.0.6-alpha.1.tgz#f70f35835394a318817546c1c99e750e9eebb083"
-  integrity sha512-eowxdfmf4KHS6CU0NJhZ+pTN2ODg1uDs58/3Nsfkw1R3Tzf1B0BUvNzEjHqK4yjeBEP0y+cRCmVwCwvBUxlBtw==
+"@use-rematch/core@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@use-rematch/core/-/core-0.1.0.tgz#19edd962b76e1714d1c43596be9e9a69e60bcf0b"
+  integrity sha512-AzRTGfpWZPEloVi0W0U4svZQsUf6mwysfsAb04uIaXyJ1hnPyzYMY2wcX5sK2if2r2UL32oI/LFOBdl4GPwKzw==
   dependencies:
     lodash.flow "3.5.0"
 
@@ -5102,9 +5102,9 @@ tmp@^0.0.33:
     os-tmpdir "~1.0.2"
 
 tmpl@1.0.x:
-  version "1.0.4"
-  resolved "https://registry.npm.taobao.org/tmpl/download/tmpl-1.0.4.tgz#23640dd7b42d00433911140820e5cf440e521dd1"
-  integrity sha1-I2QN17QtAEM5ERQIIOXPRA5SHdE=
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/tmpl/-/tmpl-1.0.5.tgz#8683e0b902bb9c20c4f726e3c0b69f36518c07cc"
+  integrity sha512-3f0uOEAQwIqGuWW2MVzYg8fV/QNnc/IpuJNG837rLuczAaLVHslWHZQj4IGiEl5Hs3kkbhwL9Ab7Hrsmuj+Smw==
 
 to-fast-properties@^2.0.0:
   version "2.0.0"
