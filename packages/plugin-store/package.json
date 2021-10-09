@@ -1,14 +1,22 @@
 {
   "name": "@use-rematch/plugin-store",
   "version": "0.1.0",
-  "main": "lib/plugin-store.cjs.js",
-  "module": "lib/plugin-store.esm.js",
-  "browser": "lib/plugin-store.umd.js",
-  "typings": "lib/index.d.ts",
   "files": [
     "src",
     "lib"
   ],
+  "main": "lib/plugin-store.cjs.js",
+  "module": "lib/plugin-store.esm.js",
+  "browser": "lib/plugin-store.umd.js",
+  "typings": "lib/index.d.ts",
+  "scripts": {
+    "build": "rimraf lib && rollup -c",
+    "dev": "rollup -c -w",
+    "test": "jest",
+    "pretest": "npm run build",
+    "update": "npm update && npm update --save-dev",
+    "check": "npm outdated && npm outdated --save-dev"
+  },
   "peerDependencies": {
     "@use-rematch/core": "latest"
   },
@@ -33,14 +41,6 @@
     "ts-node": "8.5.0",
     "tslib": "1.10.0",
     "typescript": "3.8.3"
-  },
-  "scripts": {
-    "build": "rimraf lib && rollup -c",
-    "dev": "rollup -c -w",
-    "test": "jest",
-    "pretest": "npm run build",
-    "update": "npm update && npm update --save-dev",
-    "check": "npm outdated && npm outdated --save-dev"
   },
   "publishConfig": {
     "access": "public"
