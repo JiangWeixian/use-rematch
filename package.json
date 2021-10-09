@@ -1,14 +1,6 @@
 {
   "name": "use-rematch",
   "version": "0.0.0",
-  "author": {
-    "name": "jiangweixian"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/JiangWeixian/use-rematch"
-  },
-  "license": "MIT",
   "keywords": [
     "rematch",
     "rematch2",
@@ -18,29 +10,38 @@
     "useRematchReducer",
     "useRematch"
   ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JiangWeixian/use-rematch"
+  },
+  "author": {
+    "name": "jiangweixian"
+  },
+  "scripts": {
+    "test": "pnpm test -r",
+    "build": "pnpm build -r",
+    "lint:fix": "eslint . --fix",
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "**/**/*.{js,ts,tsx,vue,json}": [
+      "eslint --fix"
+    ]
+  },
   "peerDependencies": {
     "react": ">=16.9.0"
   },
   "devDependencies": {
     "@aiou/eslint-config": "^0.0.12",
-    "eslint": "^7.29.0",
+    "eslint": "^7.32.0",
+    "husky": "^7.0.0",
     "lerna": "3.20.2",
+    "lint-staged": "^11.2.0",
     "prettier": "^2.3.1",
     "pretty-quick": "^3.1.1",
     "react": "^17.0.2",
     "typescript": "3.8.3"
-  },
-  "scripts": {
-    "bootstrap": "lerna bootstrap",
-    "test": "lerna run test",
-    "build": "lerna run build",
-    "publish": "npm run build && lerna publish",
-    "prettier": "prettier --config .prettierrc --write '**/*'"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "pretty-quick --staged"
-    }
   },
   "config": {
     "commitizen": {
@@ -49,6 +50,5 @@
   },
   "publishConfig": {
     "access": "public"
-  },
-  "dependencies": {}
+  }
 }
