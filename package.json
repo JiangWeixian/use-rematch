@@ -19,8 +19,8 @@
     "name": "jiangweixian"
   },
   "scripts": {
-    "test": "pnpm test -r",
-    "build": "pnpm build -r",
+    "test": "pnpm test --filter=!./examples",
+    "build": "pnpm build --filter=!./examples",
     "lint:fix": "eslint . --fix",
     "prepare": "husky install",
     "ci:version": "pnpx changeset version",

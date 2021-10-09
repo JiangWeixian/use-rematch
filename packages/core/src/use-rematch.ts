@@ -75,7 +75,7 @@ export const useRematch = (
       }
     })
   }
-  dispatch.dispatch = dispatch
+  (dispatch as any).dispatch = dispatch
   return {
     state,
     dispatch,
