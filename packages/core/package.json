@@ -1,22 +1,6 @@
 {
   "name": "@use-rematch/core",
   "version": "0.1.0",
-  "main": "lib/use-rematch.cjs.js",
-  "module": "lib/use-rematch.esm.js",
-  "browser": "lib/use-rematch.umd.js",
-  "typings": "src/types.d.ts",
-  "files": [
-    "lib",
-    "src"
-  ],
-  "author": {
-    "name": "jiangweixian"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/JiangWeixian/use-rematch/tree/master/packages/core"
-  },
-  "license": "MIT",
   "keywords": [
     "rematch",
     "rematch2",
@@ -25,6 +9,28 @@
     "useReducer",
     "useRematchReducer"
   ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JiangWeixian/use-rematch/tree/master/packages/core"
+  },
+  "author": {
+    "name": "jiangweixian"
+  },
+  "files": [
+    "lib",
+    "src"
+  ],
+  "main": "lib/use-rematch.cjs.js",
+  "module": "lib/use-rematch.esm.js",
+  "browser": "lib/use-rematch.umd.js",
+  "typings": "src/types.d.ts",
+  "scripts": {
+    "build": "rimraf lib && rollup -c",
+    "dev": "rollup -c -w",
+    "test": "jest --verbose",
+    "pretest": "npm run build"
+  },
   "dependencies": {
     "lodash.flow": "3.5.0"
   },
@@ -48,16 +54,7 @@
     "tslib": "1.9.3",
     "typescript": "3.8.3"
   },
-  "scripts": {
-    "build": "rimraf lib && rollup -c",
-    "dev": "rollup -c -w",
-    "test": "jest --verbose",
-    "pretest": "npm run build",
-    "update": "npm update && npm update --save-dev",
-    "check": "npm outdated && npm outdated --save-dev"
-  },
   "publishConfig": {
     "access": "public"
-  },
-  "gitHead": "0ab5a9de80a62cb7e79607df76eedca79b2fbba3"
+  }
 }

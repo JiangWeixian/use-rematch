@@ -15,7 +15,7 @@ describe('plugins', () => {
 
   test('oninit could modify model', () => {
     const plugin = PluginFactory.create({
-      onInit: model => {
+      onInit: (model) => {
         return {
           ...model,
           state: {
@@ -38,7 +38,7 @@ describe('plugins', () => {
   test('onmiddleware should be called', () => {
     let cnt = 0
     const plugin = PluginFactory.create({
-      onMiddleware: state => {
+      onMiddleware: (state) => {
         cnt += 1
         return state
       },

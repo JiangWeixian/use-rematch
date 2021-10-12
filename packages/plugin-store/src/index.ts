@@ -1,9 +1,9 @@
 import { RematchReducerPlugin } from '@use-rematch/core'
 
 export const createPluginStore = (): RematchReducerPlugin => {
-  let name: string = ''
+  let name = ''
   return {
-    onInit: model => {
+    onInit: (model) => {
       const state = localStorage.getItem(model.name)
       name = model.name
       if (!state) {
@@ -15,7 +15,7 @@ export const createPluginStore = (): RematchReducerPlugin => {
         state: JSON.parse(state),
       }
     },
-    onMiddleware: state => {
+    onMiddleware: (state) => {
       localStorage.setItem(name, JSON.stringify(state))
     },
   }
