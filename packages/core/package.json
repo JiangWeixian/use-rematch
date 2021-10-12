@@ -29,9 +29,7 @@
     "build": "rimraf lib && rollup -c",
     "dev": "rollup -c -w",
     "test": "jest --verbose",
-    "pretest": "npm run build",
-    "update": "npm update && npm update --save-dev",
-    "check": "npm outdated && npm outdated --save-dev"
+    "pretest": "npm run build"
   },
   "dependencies": {
     "lodash.flow": "3.5.0"
@@ -58,6 +56,5 @@
   },
   "publishConfig": {
     "access": "public"
-  },
-  "gitHead": "0ab5a9de80a62cb7e79607df76eedca79b2fbba3"
+  }
 }
