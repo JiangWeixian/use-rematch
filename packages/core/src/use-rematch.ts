@@ -1,5 +1,5 @@
 import { useReducer, Reducer, useRef } from 'react'
-import { useRematchProps, ModelConfig } from './types'
+import { UseRematchProps, ModelConfig } from './types'
 import { PluginFactory } from './plugin'
 import compose from 'lodash.flow'
 
@@ -29,11 +29,14 @@ const applyMiddleware = (rootReducer: Reducer<any, any>, callback: Function) => 
 
 export const useRematch = (
   model: ModelConfig<any>,
-  props: useRematchProps<ModelConfig<any>> = { plugins: [] },
+  props: UseRematchProps<ModelConfig<any>> = { plugins: [] },
 ) => {
   const normalizedPlugins = props.plugins?.map((plugin) => PluginFactory.create(plugin)) || []
+  // compose model init
   const onInit = compose(normalizedPlugins?.map((plugin) => plugin.onInit))
+  // apply model middleware
   const onMiddleware = compose(normalizedPlugins?.map((plugin) => plugin.onMiddleware))
+  // modify model config before create react reducers
   const normalizedModel: ModelConfig<any> = onInit(model)
   const initialState = normalizedModel.state
   const stateRef = useRef(initialState)
@@ -63,6 +66,7 @@ export const useRematch = (
   const getStore = () => {
     return stateRef.current
   }
+  // inject effects[add] -> dispatch[add]
   if (effects) {
     Object.keys(effects).forEach((k) => {
       const effect = effects[k].bind(dispatch as any)

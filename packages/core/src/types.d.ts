@@ -6,6 +6,12 @@
 // typo utils
 export as namespace userematch
 
+type Merge<F extends object, S extends object> = {
+  [K in keyof F | keyof S]: K extends keyof S ? S[K] : K extends keyof F ? F[K] : never
+}
+
+// core typo defines
+// TODO: deprecated lifecycle
 export type LifeCycle = {
   init?(): void
 }
@@ -47,6 +53,23 @@ export type ExtractRematchDispatchersFromReducers<reducers extends ModelReducers
 export type ExtractRematchDispatchersFromModel<M extends ModelConfig> =
   ExtractRematchDispatchersFromReducers<M['reducers']> &
     ExtractRematchDispatchersFromEffects<M['effects']>
+
+export type ExtractRematchDispatchersFromPlugin<P extends RematchReducerPlugin> =
+  P extends RematchReducerPlugin<infer M>
+    ? Merge<
+        ExtractRematchDispatchersFromReducers<M['reducers']>,
+        ExtractRematchDispatchersFromEffects<M['effects']>
+      >
+    : {}
+
+export type ExtractRematchDispatchersFromPlugins<P extends RematchReducerPlugin[] = any> =
+  P extends [infer F, ...infer Rest]
+    ? Rest extends RematchReducerPlugin[]
+      ? Rest['length'] extends 0
+        ? ExtractRematchDispatchersFromPlugin<F>
+        : Merge<ExtractRematchDispatchersFromPlugin<F>, ExtractRematchDispatchersFromPlugins<Rest>>
+      : {}
+    : {}
 
 export type RematchDispatcher<P = void, M = void> = [P] extends [void]
   ? (...args: any[]) => Action<any, any>
@@ -110,26 +133,34 @@ export interface ModelConfig<
 }
 
 // use-rematch
-export type useRematchProps<M extends ModelDescriptor<any, any, any> = any> = {
+export type UseRematchProps<M extends ModelDescriptor<any, any, any> = any> = {
   plugins?: RematchReducerPlugin<M>[]
 }
 
 export function useRematch<S, R extends ModelReducers<S>, E extends ModelEffects<S>>(
   model: ModelDescriptor<S, R, E>,
-  props?: useRematchProps<ModelDescriptor<S, R, E>>,
+  props?: UseRematchProps<ModelDescriptor<S, R, E>>,
 ): {
   state: ModelDescriptor<S, R, E>['state']
-  dispatch: ExtractRematchDispatchersFromReducers<R> & ExtractRematchDispatchersFromEffects<E>
+  dispatch: ExtractRematchDispatchersFromReducers<R> &
+    ExtractRematchDispatchersFromEffects<E> &
+    ExtractRematchDispatchersFromPlugins<
+      NonNullable<UseRematchProps<ModelDescriptor<S, R, E>>['plugins']>
+    >
 }
 export function useRematch<S, R extends ModelReducers<S>, E extends ModelEffects<S>>(
   model: ModelConfig<S, R, E>,
-  props?: useRematchProps<ModelDescriptor<S, R, E>>,
+  props?: UseRematchProps<ModelDescriptor<S, R, E>>,
 ): {
   state: ModelConfig<S, R, E>['state']
-  dispatch: ExtractRematchDispatchersFromReducers<R> & ExtractRematchDispatchersFromEffects<E>
+  dispatch: ExtractRematchDispatchersFromReducers<R> &
+    ExtractRematchDispatchersFromEffects<E> &
+    ExtractRematchDispatchersFromPlugins<
+      NonNullable<UseRematchProps<ModelDescriptor<S, R, E>>['plugins']>
+    >
 }
 
-export type RematchReducerPlugin<M = any> = {
+export type RematchReducerPlugin<M extends ModelConfig = any> = {
   onInit?: (model: M) => M
   onMiddleware?: (state: any) => any
 }
