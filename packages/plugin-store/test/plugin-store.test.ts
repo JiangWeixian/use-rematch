@@ -5,7 +5,7 @@ import { renderHook } from '@testing-library/react-hooks'
 const plugin = createPluginStore()
 
 describe('plugin-store', () => {
-  test('plugin should work fine', async() => {
+  test('plugin should work fine', async () => {
     const { result } = renderHook(() =>
       useRematch(
         {

@@ -31,6 +31,9 @@
     "test": "jest --verbose",
     "pretest": "npm run build"
   },
+  "peerDependencies": {
+    "react": ">=17"
+  },
   "dependencies": {
     "lodash.flow": "3.5.0"
   },
