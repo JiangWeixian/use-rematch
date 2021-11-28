@@ -1,5 +1,5 @@
 /**
- * for reducer initize life cycle
+ * for reducer initialize life cycle
  */
 
 import { RematchReducerPlugin } from './types'

@@ -17,7 +17,7 @@ describe('basic usage of use-rematch', () => {
     expect(hook.result.current.state.text).toBe(1)
   })
 
-  test('reducer and effect should be initilzed correct', () => {
+  test('reducer and effect should be initialized correct', () => {
     const hook = renderHook(() =>
       useRematch({
         name: 'hook',
