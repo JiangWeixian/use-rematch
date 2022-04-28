@@ -83,13 +83,13 @@ importers:
 
   packages/core:
     specifiers:
-      '@testing-library/react-hooks': 3.2.1
+      '@testing-library/react-hooks': 8.0.0
       '@types/jest': 24.0.18
       '@types/lodash.flow': 3.5.6
       husky: 3.0.1
       jest: 24.9.0
       lodash.flow: 3.5.0
-      react-test-renderer: 16.13.1
+      react-test-renderer: 18.1.0
       rimraf: 3.0.0
       rollup: 1.12.2
       rollup-plugin-alias: 2.0.0
@@ -103,12 +103,12 @@ importers:
     dependencies:
       lodash.flow: 3.5.0
     devDependencies:
-      '@testing-library/react-hooks': 3.2.1_aaaf73728d8893b1d97120ce8fe51dbd
+      '@testing-library/react-hooks': 8.0.0_3da8f6ddbc2bc749a7502df273005b4e
       '@types/jest': 24.0.18
       '@types/lodash.flow': 3.5.6
       husky: 3.0.1
       jest: 24.9.0
-      react-test-renderer: 16.13.1_react@18.1.0
+      react-test-renderer: 18.1.0_react@18.1.0
       rimraf: 3.0.0
       rollup: 1.12.2
       rollup-plugin-alias: 2.0.0
@@ -3103,16 +3103,28 @@ packages:
       react-test-renderer: 17.0.2_react@18.1.0
     dev: true
 
-  /@testing-library/react-hooks/3.2.1_aaaf73728d8893b1d97120ce8fe51dbd:
-    resolution: {integrity: sha512-1OB6Ksvlk6BCJA1xpj8/WWz0XVd1qRcgqdaFAq+xeC6l61Ucj0P6QpA5u+Db/x9gU4DCX8ziR5b66Mlfg0M2RA==}
+  /@testing-library/react-hooks/8.0.0_3da8f6ddbc2bc749a7502df273005b4e:
+    resolution: {integrity: sha512-uZqcgtcUUtw7Z9N32W13qQhVAD+Xki2hxbTR461MKax8T6Jr8nsUvZB+vcBTkzY2nFvsUet434CsgF0ncW2yFw==}
+    engines: {node: '>=12'}
     peerDependencies:
-      react: '>=16.9.0'
-      react-test-renderer: '>=16.9.0'
+      '@types/react': ^16.9.0 || ^17.0.0
+      react: ^16.9.0 || ^17.0.0
+      react-dom: ^16.9.0 || ^17.0.0
+      react-test-renderer: ^16.9.0 || ^17.0.0
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+      react-dom:
+        optional: true
+      react-test-renderer:
+        optional: true
     dependencies:
       '@babel/runtime': 7.15.4
-      '@types/testing-library__react-hooks': 3.4.1
+      '@types/react': 18.0.8
       react: 18.1.0
-      react-test-renderer: 16.13.1_react@18.1.0
+      react-dom: 18.1.0_react@18.1.0
+      react-error-boundary: 3.1.4_react@18.1.0
+      react-test-renderer: 18.1.0_react@18.1.0
     dev: true
 
   /@tootallnate/once/2.0.0:
@@ -16489,6 +16501,16 @@ packages:
       scheduler: 0.22.0
     dev: true
 
+  /react-error-boundary/3.1.4_react@18.1.0:
+    resolution: {integrity: sha512-uM9uPzZJTF6wRQORmSrvOIgt4lJ9MC1sNgEOj2XGsDTRE4kmpWxg7ENK9EWNKJRMAOY9z0MuF4yIfl6gp4sotA==}
+    engines: {node: '>=10', npm: '>=6'}
+    peerDependencies:
+      react: '>=16.13.1'
+    dependencies:
+      '@babel/runtime': 7.15.4
+      react: 18.1.0
+    dev: true
+
   /react-error-overlay/5.1.6:
     resolution: {integrity: sha512-X1Y+0jR47ImDVr54Ab6V9eGk0Hnu7fVWGeHQSOXHf/C2pF9c6uy3gef8QUeuUiWlNb0i08InPSE5a/KJzNzw1Q==}
     dev: true
@@ -16513,6 +16535,10 @@ packages:
 
   /react-is/17.0.2:
     resolution: {integrity: sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==}
+    dev: true
+
+  /react-is/18.1.0:
+    resolution: {integrity: sha512-Fl7FuabXsJnV5Q1qIOQwx/sagGF18kogb4gpfcG4gjLBWO0WDiiz1ko/ExayuxE7InyQkBLkxRFG5oxY6Uu3Kg==}
     dev: true
 
   /react-lazy-load/3.1.13_react-dom@16.8.6+react@16.8.6:
@@ -16629,6 +16655,16 @@ packages:
       react-is: 17.0.2
     dev: true
 
+  /react-shallow-renderer/16.15.0_react@18.1.0:
+    resolution: {integrity: sha512-oScf2FqQ9LFVQgA73vr86xl2NaOIX73rh+YFqcOp68CWj56tSfgtGKrEbyhCj0rSijyG9M1CYprTh39fBi5hzA==}
+    peerDependencies:
+      react: ^16.0.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      object-assign: 4.1.1
+      react: 18.1.0
+      react-is: 18.1.0
+    dev: true
+
   /react-sizeme/2.6.12_react-dom@16.8.6+react@16.8.6:
     resolution: {integrity: sha512-tL4sCgfmvapYRZ1FO2VmBmjPVzzqgHA7kI8lSJ6JS6L78jXFNRdOZFpXyK6P1NBZvKPPCZxReNgzZNUajAerZw==}
     peerDependencies:
@@ -16658,18 +16694,6 @@ packages:
       resize-observer-polyfill: 1.5.1
     dev: true
 
-  /react-test-renderer/16.13.1_react@18.1.0:
-    resolution: {integrity: sha512-Sn2VRyOK2YJJldOqoh8Tn/lWQ+ZiKhyZTPtaO0Q6yNj+QDbmRkVFap6pZPy3YQk8DScRDfyqm/KxKYP9gCMRiQ==}
-    peerDependencies:
-      react: ^16.13.1
-    dependencies:
-      object-assign: 4.1.1
-      prop-types: 15.7.2
-      react: 18.1.0
-      react-is: 16.13.1
-      scheduler: 0.19.1
-    dev: true
-
   /react-test-renderer/16.7.0_react@16.8.6:
     resolution: {integrity: sha512-tFbhSjknSQ6+ttzmuGdv+SjQfmvGcq3PFKyPItohwhhOBmRoTf1We3Mlt3rJtIn85mjPXOkKV+TaKK4irvk9Yg==}
     peerDependencies:
@@ -16692,6 +16716,17 @@ packages:
       react-is: 17.0.2
       react-shallow-renderer: 16.14.1_react@18.1.0
       scheduler: 0.20.2
+    dev: true
+
+  /react-test-renderer/18.1.0_react@18.1.0:
+    resolution: {integrity: sha512-OfuueprJFW7h69GN+kr4Ywin7stcuqaYAt1g7airM5cUgP0BoF5G5CXsPGmXeDeEkncb2fqYNECO4y18sSqphg==}
+    peerDependencies:
+      react: ^18.1.0
+    dependencies:
+      react: 18.1.0
+      react-is: 18.1.0
+      react-shallow-renderer: 16.15.0_react@18.1.0
+      scheduler: 0.22.0
     dev: true
 
   /react-tween-state/0.1.5:
@@ -17668,13 +17703,6 @@ packages:
     dependencies:
       loose-envify: 1.4.0
       object-assign: 4.1.1
-
-  /scheduler/0.19.1:
-    resolution: {integrity: sha512-n/zwRWRYSUj0/3g/otKDRPMh6qv2SYMWNq85IEa8iZyAv8od9zDYpGSnpBEjNgcMNq6Scbu5KfIPxNF72R/2EA==}
-    dependencies:
-      loose-envify: 1.4.0
-      object-assign: 4.1.1
-    dev: true
 
   /scheduler/0.20.2:
     resolution: {integrity: sha512-2eWfGgAqqWFGqtdMmcL5zCMK1U8KlXv8SQFGglL3CEtd0aDVDWgeF/YoCmvln55m5zSk3J/20hTaSBeSObsQDQ==}
