@@ -13,12 +13,12 @@ export type LifeCycle = {
 export type ExtractRematchDispatcherAsyncFromEffect<E> = E extends () => Promise<infer R>
   ? RematchDispatcherAsync<void, void, R>
   : E extends (payload: infer P) => Promise<infer R>
-    ? RematchDispatcherAsync<P, void, R>
-    : E extends (payload: infer P, meta: infer M) => Promise<infer R>
-      ? RematchDispatcherAsync<P, M, R>
-      : E extends (payload: infer P, meta: infer M, extra: infer PS) => Promise<infer R>
-        ? RematchDispatcherAsync<P, M, R>
-        : RematchDispatcherAsync<any, any, any>
+  ? RematchDispatcherAsync<P, void, R>
+  : E extends (payload: infer P, meta: infer M) => Promise<infer R>
+  ? RematchDispatcherAsync<P, M, R>
+  : E extends (payload: infer P, meta: infer M, extra: infer PS) => Promise<infer R>
+  ? RematchDispatcherAsync<P, M, R>
+  : RematchDispatcherAsync<any, any, any>
 
 export type ExtractRematchDispatchersFromEffectsObject<effects extends ModelEffects<any>> = {
   [effectKey in keyof effects]: ExtractRematchDispatcherAsyncFromEffect<effects[effectKey]>
@@ -30,12 +30,12 @@ export type ExtractRematchDispatchersFromEffects<effects extends ModelConfig['ef
 export type ExtractRematchDispatcherFromReducer<R> = R extends () => any
   ? RematchDispatcher<void, void>
   : R extends (state: infer S) => infer S
-    ? RematchDispatcher<void, void>
-    : R extends (state: infer S, payload: infer P) => infer S
-      ? RematchDispatcher<P, void>
-      : R extends (state: infer S, payload: infer P, meta: infer M) => infer S
-        ? RematchDispatcher<P, M>
-        : RematchDispatcher<any, any>
+  ? RematchDispatcher<void, void>
+  : R extends (state: infer S, payload: infer P) => infer S
+  ? RematchDispatcher<P, void>
+  : R extends (state: infer S, payload: infer P, meta: infer M) => infer S
+  ? RematchDispatcher<P, M>
+  : RematchDispatcher<any, any>
 
 export type ExtractRematchDispatchersFromReducersObject<reducers extends ModelReducers<any>> = {
   [reducerKey in keyof reducers]: ExtractRematchDispatcherFromReducer<reducers[reducerKey]>
@@ -46,36 +46,36 @@ export type ExtractRematchDispatchersFromReducers<reducers extends ModelReducers
 
 export type ExtractRematchDispatchersFromModel<M extends ModelConfig> =
   ExtractRematchDispatchersFromReducers<M['reducers']> &
-  ExtractRematchDispatchersFromEffects<M['effects']>
+    ExtractRematchDispatchersFromEffects<M['effects']>
 
 export type RematchDispatcher<P = void, M = void> = [P] extends [void]
   ? (...args: any[]) => Action<any, any>
   : [M] extends [void]
-    ? (payload: P) => Action<P, void>
-    : (payload: P, meta: M) => Action<P, M>
+  ? (payload: P) => Action<P, void>
+  : (payload: P, meta: M) => Action<P, M>
 
 export type RematchDispatcherAsync<P = void, M = void, R = void> = ([P] extends [void]
   ? (...args: any[]) => Promise<R>
   : [M] extends [void]
-    ? (payload: P) => Promise<R>
-    : (payload: P, meta: M) => Promise<R>) &
-((action: Action<P, M>) => Promise<R>) &
-((action: Action<P, void>) => Promise<R>)
+  ? (payload: P) => Promise<R>
+  : (payload: P, meta: M) => Promise<R>) &
+  ((action: Action<P, M>) => Promise<R>) &
+  ((action: Action<P, void>) => Promise<R>)
 
 export type ModelDescriptor<S, R extends ModelReducers<any>, E extends ModelEffects<any>> = {
   name?: string
   state: S
   reducers?: R
   effects?: E &
-  ThisType<
-  ExtractRematchDispatchersFromReducers<R> &
-  ExtractRematchDispatchersFromEffects<E> & { dispatch: (action: Action) => void }
-  >
+    ThisType<
+      ExtractRematchDispatchersFromReducers<R> &
+        ExtractRematchDispatchersFromEffects<E> & { dispatch: (action: Action) => void }
+    >
   lifecycle?: LifeCycle &
-  ThisType<
-  ExtractRematchDispatchersFromReducers<R> &
-  ExtractRematchDispatchersFromEffects<E> & { dispatch: (action: Action) => void }
-  >
+    ThisType<
+      ExtractRematchDispatchersFromReducers<R> &
+        ExtractRematchDispatchersFromEffects<E> & { dispatch: (action: Action) => void }
+    >
 }
 
 export type Action<P = any, M = any> = {
@@ -138,7 +138,7 @@ export type RematchReducerHook<M extends ModelDescriptor<any, any, any> = any> =
   name: string,
   state: M['state'],
   dispatch: ExtractRematchDispatchersFromReducers<M['reducers']> &
-  ExtractRematchDispatchersFromEffects<M['effects']>,
+    ExtractRematchDispatchersFromEffects<M['effects']>,
 ) => any
 
 export function createModel<S, R extends ModelReducers<S>, E extends ModelEffects<S>>(

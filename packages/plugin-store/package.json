@@ -1,14 +1,14 @@
 {
   "name": "@use-rematch/plugin-store",
   "version": "0.1.0",
-  "files": [
-    "src",
-    "lib"
-  ],
   "main": "lib/plugin-store.cjs.js",
   "module": "lib/plugin-store.esm.js",
   "browser": "lib/plugin-store.umd.js",
   "typings": "lib/index.d.ts",
+  "files": [
+    "src",
+    "lib"
+  ],
   "scripts": {
     "build": "rimraf lib && rollup -c",
     "dev": "rollup -c -w",

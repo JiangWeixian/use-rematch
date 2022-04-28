@@ -17,14 +17,14 @@
   "author": {
     "name": "jiangweixian"
   },
-  "files": [
-    "lib",
-    "src"
-  ],
   "main": "lib/use-rematch.cjs.js",
   "module": "lib/use-rematch.esm.js",
   "browser": "lib/use-rematch.umd.js",
   "typings": "src/types.d.ts",
+  "files": [
+    "lib",
+    "src"
+  ],
   "scripts": {
     "build": "rimraf lib && rollup -c",
     "dev": "rollup -c -w",
