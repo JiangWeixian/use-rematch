@@ -1,5 +1,5 @@
 import { useReducer, Reducer, useRef } from 'react'
-import { useRematchProps, ModelConfig } from './types'
+import { useRematchProps, ModelConfig } from '../types'
 import { PluginFactory } from './plugin'
 import compose from 'lodash.flow'
 

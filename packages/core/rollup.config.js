@@ -1,5 +1,4 @@
-import externals from 'rollup-plugin-node-externals'
-import ce from 'rollup-plugin-condition-exports'
+import { externals } from 'rollup-plugin-node-externals'
 import resolve from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
 import typescript from 'rollup-plugin-typescript2'
@@ -30,7 +29,6 @@ export default defineConfig([
         resolve: ['.ts', '.js', '.tsx', '.jsx'],
         entries: [{ find: '@/', replacement: './src/' }],
       }),
-      ce(),
     ],
     output: [
       { dir: 'dist', format: 'cjs', entryFileNames: '[name].cjs' },

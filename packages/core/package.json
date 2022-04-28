@@ -21,15 +21,16 @@
     "./package.json": "./package.json",
     ".": {
       "require": "./dist/index.cjs",
-      "types": "./dist/index.d.ts",
+      "types": "./types.d.ts",
       "import": "./dist/index.mjs"
     }
   },
   "main": "dist/index.cjs",
   "module": "dist/index.mjs",
-  "types": "dist/index.d.ts",
+  "types": "types.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "types.d.ts"
   ],
   "scripts": {
     "build": "rimraf dist && rollup -c",
@@ -58,8 +59,7 @@
     "rollup-plugin-typescript2": "0.30.0",
     "ts-jest": "24.0.2",
     "ts-node": "8.1.0",
-    "tslib": "1.9.3",
-    "typescript": "3.8.3"
+    "tslib": "1.9.3"
   },
   "publishConfig": {
     "access": "public"
