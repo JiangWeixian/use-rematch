@@ -1,31 +1,12 @@
-import resolve from 'rollup-plugin-node-resolve'
-import commonjs from 'rollup-plugin-commonjs'
+import { externals } from 'rollup-plugin-node-externals'
+import ce from 'rollup-plugin-condition-exports'
+import resolve from '@rollup/plugin-node-resolve'
+import commonjs from '@rollup/plugin-commonjs'
 import typescript from 'rollup-plugin-typescript2'
-import alias from 'rollup-plugin-alias'
-import pkg from './package.json'
+import alias from '@rollup/plugin-alias'
+import { defineConfig } from 'rollup'
 
-export default [
-  // browser-friendly UMD build
-  // {
-  //   input: 'src/index.ts',
-  //   output: {
-  //     name: 'plugin-store',
-  //     file: pkg.browser,
-  //     format: 'umd',
-  //   },
-  //   plugins: [
-  //     resolve(), // so Rollup can find `ms`
-  //     commonjs(), // so Rollup can convert `ms` to an ES module
-  //     typescript({
-  //       typescript: require('typescript'),
-  //     }), // so Rollup can convert TypeScript to JavaScript
-  //     alias({
-  //       resolve: ['.ts', '.js', '.tsx', '.jsx'],
-  //       entries: [{ find: '@/', replacement: './src/' }],
-  //     }),
-  //   ],
-  // },
-
+export default defineConfig([
   // CommonJS (for Node) and ES module (for bundlers) build.
   // (We could have three entries in the configuration array
   // instead of two, but it's quicker to generate multiple
@@ -34,17 +15,26 @@ export default [
   // `file` and `format` for each target)
   {
     input: 'src/index.ts',
-    external: ['ms'],
     plugins: [
-      typescript(), // so Rollup can convert TypeScript to JavaScript
+      externals({
+        devDeps: false,
+      }),
+      typescript({
+        tsconfigOverride: {
+          exclude: ['test'],
+        },
+      }), // so Rollup can convert TypeScript to JavaScript
+      commonjs(),
+      resolve(),
       alias({
         resolve: ['.ts', '.js', '.tsx', '.jsx'],
         entries: [{ find: '@/', replacement: './src/' }],
       }),
+      ce(),
     ],
     output: [
-      { file: pkg.main, format: 'cjs' },
-      { file: pkg.module, format: 'es' },
+      { dir: 'dist', format: 'cjs', entryFileNames: '[name].cjs' },
+      { dir: 'dist', format: 'es', entryFileNames: '[name].mjs' },
     ],
   },
-]
+])

@@ -2,7 +2,7 @@
  * for reducer initize life cycle
  */
 
-import { RematchReducerPlugin } from './types'
+import { RematchReducerPlugin } from '../types'
 
 export const PluginFactory = {
   create(plugin: RematchReducerPlugin): Required<RematchReducerPlugin> {

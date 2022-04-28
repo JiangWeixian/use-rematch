@@ -10,7 +10,7 @@ describe('basic usage of use-rematch', () => {
           text: 1,
         } as { text: number },
         reducers: {
-          set: v => v,
+          set: (v) => v,
         },
       }),
     )
@@ -25,7 +25,7 @@ describe('basic usage of use-rematch', () => {
           text: 1,
         } as { text: number },
         reducers: {
-          set: v => v,
+          set: (v) => v,
         },
         effects: {
           async asyncSet(this: any, payload) {
@@ -38,7 +38,7 @@ describe('basic usage of use-rematch', () => {
     expect(typeof (hook.result.current.dispatch as any).asyncSet).toBe('function')
   })
 
-  test('reducer and effect should work correct', async() => {
+  test('reducer and effect should work correct', async () => {
     const hook = renderHook(() =>
       useRematch({
         name: 'hook',
