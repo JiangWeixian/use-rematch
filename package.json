@@ -19,7 +19,7 @@
     "name": "jiangweixian"
   },
   "scripts": {
-    "test": "pnpm test --filter=!./examples",
+    "test": "pnpm test --filter=!./examples -- --watch=false",
     "build": "pnpm build --filter=!./examples",
     "lint:fix": "eslint . --fix",
     "prepare": "husky install",

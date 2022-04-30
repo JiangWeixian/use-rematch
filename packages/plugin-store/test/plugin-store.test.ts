@@ -32,6 +32,6 @@ describe('plugin-store', () => {
     })
     expect(result.current.state.text).toBe(2)
     const storage = localStorage.getItem('hook')
-    expect(storage).toMatchInlineSnapshot('{"text":2}')
+    expect(JSON.parse(storage)).toMatchObject({ text: 2 })
   })
 })
