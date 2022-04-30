@@ -1,6 +1,7 @@
 import { createPluginStore } from '../src/index'
+
 import { useRematch } from '@use-rematch/core'
-import { renderHook } from '@testing-library/react-hooks'
+import { renderHook, act } from '@testing-library/react-hooks'
 
 const plugin = createPluginStore()
 
@@ -26,8 +27,11 @@ describe('plugin-store', () => {
       ),
     )
     expect(result.current.state.text).toBe(1)
-    result.current.dispatch.set(2)
+    act(() => {
+      result.current.dispatch.set(2)
+    })
     expect(result.current.state.text).toBe(2)
-    expect(localStorage.setItem).toHaveBeenLastCalledWith('hook', '{"text":2}')
+    const storage = localStorage.getItem('hook')
+    expect(storage).toMatchInlineSnapshot('{"text":2}')
   })
 })
