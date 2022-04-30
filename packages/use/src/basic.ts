@@ -1,9 +1,9 @@
 import { useRematch } from '@use-rematch/core'
 
-export const useStore = () => {
+export const useStore = <S extends Record<string, any>>(initialState: S = {} as S) => {
   const { state, dispatch } = useRematch({
     name: '@use-rematch/basic',
-    state: {},
+    state: initialState,
     reducers: {
       set(_state: any, nextState: any) {
         return nextState
