@@ -1,5 +1,6 @@
 import { useRematch } from '../src/use-rematch'
-import { renderHook } from '@testing-library/react-hooks'
+
+import { renderHook, act } from '@testing-library/react-hooks'
 
 describe('basic usage of use-rematch', () => {
   test('state init should work fine', () => {
@@ -60,9 +61,13 @@ describe('basic usage of use-rematch', () => {
         },
       }),
     )
-    ;(hook.result.current.dispatch as any).set({ text: 2 })
+    act(() => {
+      ;(hook.result.current.dispatch as any).set({ text: 2 })
+    })
     expect(hook.result.current.state.text).toBe(2)
-    ;(hook.result.current.dispatch as any).asyncSet({ text: 3 })
+    act(() => {
+      ;(hook.result.current.dispatch as any).asyncSet({ text: 3 })
+    })
     expect(hook.result.current.state.text).toBe(3)
   })
 })

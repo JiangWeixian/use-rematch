@@ -18,7 +18,7 @@
   "scripts": {
     "build": "rimraf dist && rollup -c",
     "dev": "rollup -c -w",
-    "test": "jest",
+    "test": "vitest",
     "pretest": "pnpm run build"
   },
   "peerDependencies": {
@@ -28,21 +28,13 @@
     "@rollup/plugin-alias": "^3.1.9",
     "@rollup/plugin-commonjs": "^21.0.2",
     "@rollup/plugin-node-resolve": "^13.1.3",
-    "@testing-library/react-hooks": "8.0.0",
-    "@types/jest": "24.0.22",
     "@use-rematch/core": "workspace:^0.1.0",
-    "husky": "3.0.9",
-    "jest": "24.9.0",
-    "jest-localstorage-mock": "2.4.0",
-    "react-test-renderer": "18.1.0",
     "rimraf": "3.0.0",
     "rollup": "2.58.0",
     "rollup-plugin-condition-exports": "^1.3.1",
     "rollup-plugin-node-externals": "^4.0.0",
     "rollup-plugin-size": "^0.2.2",
     "rollup-plugin-typescript2": "0.30.0",
-    "ts-jest": "24.1.0",
-    "ts-node": "8.5.0",
     "tslib": "1.10.0"
   },
   "publishConfig": {
