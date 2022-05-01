@@ -30,12 +30,11 @@
     "@rollup/plugin-node-resolve": "^13.1.3",
     "@use-rematch/core": "workspace:^0.1.0",
     "rimraf": "3.0.0",
-    "rollup": "2.58.0",
+    "rollup": "2.71.1",
     "rollup-plugin-condition-exports": "^1.3.1",
     "rollup-plugin-node-externals": "^4.0.0",
     "rollup-plugin-size": "^0.2.2",
-    "rollup-plugin-typescript2": "0.30.0",
-    "tslib": "1.10.0"
+    "rollup-plugin-typescript2": "0.30.0"
   },
   "publishConfig": {
     "access": "public"
