@@ -1,6 +1,9 @@
 # @use-rematch/use
 *useful recipes*
 
+[![npm](https://img.shields.io/npm/v/@use-rematch/use.svg?style=flat-square)](https://www.npmjs.org/package/@use-rematch/core)
+
+
 ## install
 
 ```console
