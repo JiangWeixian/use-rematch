@@ -1,12 +1,12 @@
 import { useReducer, Reducer, useRef } from 'react'
-import { useRematchProps, ModelConfig } from './types'
+import { useRematchProps, ModelConfig } from '../types'
 import { PluginFactory } from './plugin'
 import compose from 'lodash.flow'
 
 type Action = { type: string; payload: any; meta: any }
 
 function createDispatcher(this: any, reducerName: string) {
-  return async(payload: any, meta: any): Promise<any> => {
+  return async (payload: any, meta: any): Promise<any> => {
     const action: Action = { type: reducerName, payload, meta }
     this(action)
     return action
@@ -16,8 +16,7 @@ function createDispatcher(this: any, reducerName: string) {
 const applyMiddleware = (rootReducer: Reducer<any, any>, callback: Function) => {
   return (state: any, action: Action) => {
     const nextState = rootReducer(state, action)
-    if (callback)
-      callback(nextState)
+    if (callback) callback(nextState)
 
     return nextState
   }
@@ -32,19 +31,17 @@ export const useRematch = (
   model: ModelConfig<any>,
   props: useRematchProps<ModelConfig<any>> = { plugins: [] },
 ) => {
-  const normalizedPlugins = props.plugins?.map(plugin => PluginFactory.create(plugin)) || []
-  const onInit = compose(normalizedPlugins?.map(plugin => plugin.onInit))
-  const onMiddleware = compose(normalizedPlugins?.map(plugin => plugin.onMiddleware))
+  const normalizedPlugins = props.plugins?.map((plugin) => PluginFactory.create(plugin)) || []
+  const onInit = compose(normalizedPlugins?.map((plugin) => plugin.onInit))
+  const onMiddleware = compose(normalizedPlugins?.map((plugin) => plugin.onMiddleware))
   const normalizedModel: ModelConfig<any> = onInit(model)
   const initialState = normalizedModel.state
   const stateRef = useRef(initialState)
   const reducers = normalizedModel.reducers
   const reactReducers = (state = initialState, action: Action) => {
-    if (!reducers)
-      return state
+    if (!reducers) return state
 
-    if (!reducers[action.type])
-      return state
+    if (!reducers[action.type]) return state
 
     return reducers[action.type](state, action.payload, action.meta)
   }
@@ -69,13 +66,13 @@ export const useRematch = (
   if (effects) {
     Object.keys(effects).forEach((k) => {
       const effect = effects[k].bind(dispatch as any)
-      dispatch[k] = async(payload: any) => {
+      dispatch[k] = async (payload: any) => {
         const currentState = getStore()
         return effect(payload, currentState, currentState)
       }
     })
   }
-  (dispatch as any).dispatch = dispatch
+  ;(dispatch as any).dispatch = dispatch
   return {
     state,
     dispatch,

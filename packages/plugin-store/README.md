@@ -4,8 +4,8 @@
 
 ## install
 
-```bash
-npm install @use-rematch/core @use-rematch/plugin-store
+```console
+pnpm i @use-rematch/core @use-rematch/plugin-store
 ```
 
 ## usage

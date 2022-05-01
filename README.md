@@ -1,13 +1,15 @@
 # @use-rematch
 
-*use-rematch is a React hook lib, redefine the way how you write reducer. It's totally wrote by typescript!*
+*inspired by [rematch](https://github.com/rematch/rematch). use-rematch is a React hook lib, based on useReducer*
+
+[![npm](https://img.shields.io/npm/v/@use-rematch/core.svg?style=flat-square)](https://www.npmjs.org/package/@use-rematch/core)
 
 ## introduction
 
 ### install
 
-```sh
-npm install @use-rematch/core
+```console
+pnpm i @use-rematch/core
 ```
 
 ### features
@@ -27,7 +29,7 @@ import { useRematch } from '@use-rematch/core';
 
 const useHook = () => {
   const { state, dispatch } = useRematch({
-    name: 'use-rematch-reducer',
+    name: '@use-rematch/basic',
     state: {
       cnt: 0,
     },
@@ -76,7 +78,7 @@ then use dispatchers and state in component. In this way, you can dispatch actio
 import { createModel } from '@use-rematch/core'
 
 const model = createModel({
-  name: 'use-rematch-reducer',
+  name: '@use-rematch/reuse',
   state: {
     cnt: 0,
   },
@@ -139,6 +141,7 @@ const useHook = () => {
 
 - [@use-rematch/core](https://www.npmjs.com/package/@use-rematch/core)
 - [@use-rematch/plugin-store](https://www.npmjs.com/package/@use-rematch/plugin-store)
+- [@use-rematch/use](https://www.npmjs.com/package/@use-rematch/use)
 
 ## Author
 
