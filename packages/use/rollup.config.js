@@ -1,7 +1,7 @@
 import resolve from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
 import typescript from 'rollup-plugin-typescript2'
-import externals from 'rollup-plugin-node-externals'
+import { externals } from 'rollup-plugin-node-externals'
 import alias from '@rollup/plugin-alias'
 import size from 'rollup-plugin-size'
 import mutiple from 'rollup-plugin-multi-input'
