@@ -29,6 +29,7 @@ jobs:
       - name: Install 
         run: |
           pnpm install --frozen-lockfile=false
+          pnpm build:packages
       - name: Test
         run: |
           pnpm test
