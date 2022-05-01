@@ -27,5 +27,5 @@ dispatch.set({ zoo: 1 })
 
 // partial update
 // from { zoo: 1 } to { dolphin: 1, zoo: 1 }
-dispatch.set({ dolphin: 1 })
+dispatch.update({ dolphin: 1 })
 ```
