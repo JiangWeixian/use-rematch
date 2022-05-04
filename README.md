@@ -143,6 +143,10 @@ const useHook = () => {
 - [@use-rematch/plugin-store](https://www.npmjs.com/package/@use-rematch/plugin-store)
 - [@use-rematch/use](https://www.npmjs.com/package/@use-rematch/use)
 
+## Develop
+
+currently, `pnpm@7` not working on vercel, please still use `pnpm@6`
+
 ## Author
 
 👤 **JW**
