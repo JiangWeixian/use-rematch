@@ -1,6 +1,7 @@
 {
   "scripts": {
     "test": "pnpm test --filter=!./playground -- --watch=false",
+    "play": "pnpm dev --filter=./playground",
     "build:packages": "pnpm build --filter=./packages",
     "build:playground": "pnpm build --filter=./playground",
     "build": "pnpm run-s build:*",
