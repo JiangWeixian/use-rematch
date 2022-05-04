@@ -36,7 +36,7 @@ function App() {
   return (
     <div className="w-sceen h-screen flex justify-center items-center">
       <div className="p-2 shadow-lg rounded-md flex flex-col justify-center bg-base-300">
-        <div className="stats shadow bg-transparent">
+        <div className="stats bg-transparent">
           <div className="stat">
             <div className="stat-title">The count</div>
             <div className="stat-value h-12 flex items-center">
